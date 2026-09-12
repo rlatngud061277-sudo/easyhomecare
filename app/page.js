@@ -518,7 +518,7 @@ export default function Home() {
         style={{
           background: "#1c261f",
           color: "#c9cec8",
-          padding: "38px 24px",
+          padding: "38px 24px 100px",
         }}
       >
         <div
@@ -526,7 +526,7 @@ export default function Home() {
             maxWidth: "1120px",
             margin: "0 auto",
             fontSize: "13px",
-            lineHeight: "1.8",
+            lineHeight: "1.9",
           }}
         >
           <strong
@@ -534,19 +534,103 @@ export default function Home() {
               display: "block",
               color: "#fff",
               fontSize: "18px",
-              marginBottom: "8px",
+              marginBottom: "10px",
             }}
           >
             이지홈케어
           </strong>
 
-          <div>벌목 · 철거 · 외부작업 · 집수리</div>
-          <div>전화 : 010-2384-9768</div>
+          <div>대표자 : 송은규</div>
           <div>사업자등록번호 : 882-06-03153</div>
+          <div>전화 : 010-2384-9768</div>
+          <div>
+            업무 : 벌목 · 위험목 제거 · 냉장고 철거 · 외부작업 · 집수리
+          </div>
 
           <div
             style={{
               marginTop: "18px",
+              paddingTop: "18px",
+              borderTop: "1px solid rgba(255,255,255,0.12)",
+            }}
+          >
+            <details>
+              <summary
+                style={{
+                  color: "#fff",
+                  fontWeight: "700",
+                  cursor: "pointer",
+                  marginBottom: "12px",
+                }}
+              >
+                개인정보처리방침
+              </summary>
+
+              <div
+                style={{
+                  color: "#aeb5af",
+                  lineHeight: "1.8",
+                  paddingTop: "8px",
+                }}
+              >
+                <p>
+                  이지홈케어는 고객의 개인정보를 중요하게 생각하며 관련
+                  법령에 따라 개인정보를 보호하고 있습니다.
+                </p>
+
+                <p>
+                  <strong style={{ color: "#d9ddd9" }}>
+                    1. 수집하는 개인정보
+                  </strong>
+                  <br />
+                  견적 및 작업 상담 과정에서 이름, 연락처, 작업 주소,
+                  현장 사진 및 상담에 필요한 정보를 제공받을 수 있습니다.
+                </p>
+
+                <p>
+                  <strong style={{ color: "#d9ddd9" }}>
+                    2. 개인정보 이용 목적
+                  </strong>
+                  <br />
+                  수집된 정보는 견적 상담, 현장 확인, 작업 일정 조율,
+                  고객 문의 응대 및 서비스 제공을 위해 이용됩니다.
+                </p>
+
+                <p>
+                  <strong style={{ color: "#d9ddd9" }}>
+                    3. 개인정보 보유 및 이용기간
+                  </strong>
+                  <br />
+                  개인정보는 이용 목적이 달성된 후 지체 없이 파기하며,
+                  관계 법령에 따라 보존이 필요한 경우 해당 기간 동안
+                  보관할 수 있습니다.
+                </p>
+
+                <p>
+                  <strong style={{ color: "#d9ddd9" }}>
+                    4. 개인정보의 제3자 제공
+                  </strong>
+                  <br />
+                  이지홈케어는 법령에서 정한 경우를 제외하고 고객의 동의
+                  없이 개인정보를 제3자에게 제공하지 않습니다.
+                </p>
+
+                <p>
+                  <strong style={{ color: "#d9ddd9" }}>
+                    5. 개인정보 관련 문의
+                  </strong>
+                  <br />
+                  개인정보 관련 문의 : 010-2384-9768
+                  <br />
+                  대표자 : 송은규
+                </p>
+              </div>
+            </details>
+          </div>
+
+          <div
+            style={{
+              marginTop: "20px",
               color: "#8f9790",
             }}
           >
