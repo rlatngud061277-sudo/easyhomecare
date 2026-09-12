@@ -1,7 +1,7 @@
 export const metadata = {
-  title: "이지홈케어 | 벌목·집수리 전문",
+  title: "이지종합건설 | 벌목·철거·외부작업 전문",
   description:
-    "벌목 전문 시공부터 생활 집수리까지. 이지홈케어가 깔끔하게 해결해드립니다.",
+    "위험목, 고목, 대형수목 벌목부터 냉장고 철거, 외부작업, 각종 집수리까지 이지종합건설이 현장 맞춤으로 진행합니다.",
 };
 
 export default function RootLayout({ children }) {
