@@ -22,6 +22,39 @@ export default function Home() {
     },
   ];
 
+  const portfolio = [
+    {
+      title: "대형 수목 벌목 작업",
+      category: "벌목 시공",
+      image: "/work1.jpg",
+    },
+    {
+      title: "위험목 제거 작업",
+      category: "벌목 시공",
+      image: "/work2.jpg",
+    },
+    {
+      title: "냉장고 철거 작업",
+      category: "철거 시공",
+      image: "/work3.jpg",
+    },
+    {
+      title: "외부 시설물 보수",
+      category: "외부 작업",
+      image: "/work4.jpg",
+    },
+    {
+      title: "렉산 및 외부 보수",
+      category: "외부 작업",
+      image: "/work5.jpg",
+    },
+    {
+      title: "생활 집수리 현장",
+      category: "집수리",
+      image: "/work6.jpg",
+    },
+  ];
+
   return (
     <main
       style={{
@@ -32,6 +65,7 @@ export default function Home() {
           "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       }}
     >
+      {/* HEADER */}
       <header
         style={{
           position: "sticky",
@@ -62,8 +96,9 @@ export default function Home() {
                 color: "#24462a",
               }}
             >
-              이지홈케어
+              이지종합건설
             </div>
+
             <div
               style={{
                 fontSize: "12px",
@@ -71,7 +106,7 @@ export default function Home() {
                 color: "#6f756e",
               }}
             >
-              벌목 · 철거 · 외부작업 전문
+              벌목 · 철거 · 외부작업 · 집수리
             </div>
           </div>
 
@@ -92,6 +127,7 @@ export default function Home() {
         </div>
       </header>
 
+      {/* HERO */}
       <section
         style={{
           background:
@@ -143,9 +179,11 @@ export default function Home() {
               color: "rgba(255,255,255,0.86)",
             }}
           >
-            주택 · 공장 · 상가 · 토지 현장 확인부터 안전한 벌목과 정리까지.
-            냉장고 철거, 외부 시설물 철거 및 각종 외부작업도 함께
-            진행합니다.
+            주택 · 공장 · 상가 · 토지 현장 확인부터 안전한 벌목과
+            정리까지.
+            <br />
+            냉장고 철거, 외부 시설물 철거, 외벽 보수 및 각종 집수리도
+            함께 진행합니다.
           </p>
 
           <div
@@ -171,7 +209,7 @@ export default function Home() {
             </a>
 
             <a
-              href="#services"
+              href="#portfolio"
               style={{
                 textDecoration: "none",
                 border: "1px solid rgba(255,255,255,0.55)",
@@ -181,12 +219,13 @@ export default function Home() {
                 fontWeight: "800",
               }}
             >
-              작업 서비스 보기
+              시공사례 보기
             </a>
           </div>
         </div>
       </section>
 
+      {/* SERVICES */}
       <section
         id="services"
         style={{
@@ -204,7 +243,7 @@ export default function Home() {
               marginBottom: "10px",
             }}
           >
-            EASY HOME CARE
+            EASY CONSTRUCTION
           </div>
 
           <h2
@@ -280,176 +319,251 @@ export default function Home() {
         </div>
       </section>
 
+      {/* PORTFOLIO */}
       <section
+        id="portfolio"
         style={{
           background: "#ece9df",
+          padding: "85px 24px",
         }}
       >
         <div
           style={{
             maxWidth: "1120px",
             margin: "0 auto",
-            padding: "80px 24px",
           }}
         >
           <div
             style={{
-              fontSize: "14px",
-              fontWeight: "900",
-              color: "#796344",
-              marginBottom: "10px",
+              marginBottom: "35px",
             }}
           >
-            WORK AREA
+            <div
+              style={{
+                fontSize: "14px",
+                fontWeight: "900",
+                color: "#796344",
+                marginBottom: "10px",
+              }}
+            >
+              PORTFOLIO
+            </div>
+
+            <h2
+              style={{
+                margin: 0,
+                fontSize: "38px",
+                letterSpacing: "-1.8px",
+              }}
+            >
+              시공사례
+            </h2>
+
+            <p
+              style={{
+                color: "#697069",
+                lineHeight: "1.7",
+                marginTop: "13px",
+              }}
+            >
+              실제 작업 사진을 등록해 이지종합건설의 시공 현장을
+              확인하실 수 있습니다.
+            </p>
           </div>
 
-          <h2
+          <div
             style={{
-              margin: "0 0 18px",
-              fontSize: "36px",
-              letterSpacing: "-1.5px",
+              display: "grid",
+              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
+              gap: "20px",
             }}
           >
-            출장 가능 지역
-          </h2>
+            {portfolio.map((item) => (
+              <div
+                key={item.title}
+                style={{
+                  background: "#fff",
+                  borderRadius: "18px",
+                  overflow: "hidden",
+                  border: "1px solid #dfddd3",
+                }}
+              >
+                <div
+                  style={{
+                    height: "220px",
+                    background: "#d8d8d2",
+                    position: "relative",
+                    overflow: "hidden",
+                  }}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      objectFit: "cover",
+                    }}
+                  />
+                </div>
 
-          <p
-            style={{
-              margin: 0,
-              fontSize: "17px",
-              lineHeight: "1.8",
-              color: "#5e665f",
-            }}
-          >
-            서울 · 경기 · 인천 · 충남 · 충북
-            <br />
-            그 외 지역은 현장 상황에 따라 문의해주세요.
-          </p>
+                <div
+                  style={{
+                    padding: "20px",
+                  }}
+                >
+                  <div
+                    style={{
+                      color: "#796344",
+                      fontSize: "12px",
+                      fontWeight: "900",
+                      marginBottom: "8px",
+                    }}
+                  >
+                    {item.category}
+                  </div>
+
+                  <h3
+                    style={{
+                      margin: 0,
+                      fontSize: "19px",
+                    }}
+                  >
+                    {item.title}
+                  </h3>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
+      {/* AREA */}
       <section
         style={{
           maxWidth: "1120px",
           margin: "0 auto",
-          padding: "85px 24px",
+          padding: "80px 24px",
         }}
       >
         <div
           style={{
+            fontSize: "14px",
+            fontWeight: "900",
+            color: "#796344",
+            marginBottom: "10px",
+          }}
+        >
+          WORK AREA
+        </div>
+
+        <h2
+          style={{
+            margin: "0 0 18px",
+            fontSize: "36px",
+            letterSpacing: "-1.5px",
+          }}
+        >
+          출장 가능 지역
+        </h2>
+
+        <p
+          style={{
+            margin: 0,
+            fontSize: "17px",
+            lineHeight: "1.8",
+            color: "#5e665f",
+          }}
+        >
+          서울 · 경기 · 인천 · 충남 · 충북
+          <br />
+          그 외 지역은 현장 상황에 따라 문의해주세요.
+        </p>
+      </section>
+
+      {/* PROCESS */}
+      <section
+        style={{
+          background: "#f1efe7",
+        }}
+      >
+        <div
+          style={{
+            maxWidth: "1120px",
+            margin: "0 auto",
+            padding: "85px 24px",
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
             gap: "22px",
-            alignItems: "stretch",
           }}
         >
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: "18px",
-              border: "1px solid #e4e1d7",
-              padding: "30px",
-            }}
-          >
+          {[
+            {
+              step: "STEP 01",
+              title: "현장 상담",
+              desc: "작업 위치, 현장 사진, 수목 크기 또는 철거 대상 정보를 확인합니다.",
+            },
+            {
+              step: "STEP 02",
+              title: "견적 안내",
+              desc: "작업 난이도, 현장 조건, 장비 사용 여부를 확인해 견적을 안내합니다.",
+            },
+            {
+              step: "STEP 03",
+              title: "작업 및 마무리",
+              desc: "현장 안전을 우선으로 시공하고 작업 완료 후 깔끔하게 정리합니다.",
+            },
+          ].map((item) => (
             <div
+              key={item.step}
               style={{
-                fontSize: "13px",
-                fontWeight: "900",
-                color: "#796344",
-                marginBottom: "9px",
+                background: "#fff",
+                borderRadius: "18px",
+                border: "1px solid #e4e1d7",
+                padding: "30px",
               }}
             >
-              STEP 01
-            </div>
-            <h3 style={{ fontSize: "23px", margin: "0 0 12px" }}>
-              현장 상담
-            </h3>
-            <p
-              style={{
-                color: "#686e68",
-                lineHeight: "1.75",
-                margin: 0,
-              }}
-            >
-              작업 위치, 현장 사진, 수목 크기 또는 철거 대상 정보를
-              확인합니다.
-            </p>
-          </div>
+              <div
+                style={{
+                  fontSize: "13px",
+                  fontWeight: "900",
+                  color: "#796344",
+                  marginBottom: "9px",
+                }}
+              >
+                {item.step}
+              </div>
 
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: "18px",
-              border: "1px solid #e4e1d7",
-              padding: "30px",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "13px",
-                fontWeight: "900",
-                color: "#796344",
-                marginBottom: "9px",
-              }}
-            >
-              STEP 02
-            </div>
-            <h3 style={{ fontSize: "23px", margin: "0 0 12px" }}>
-              견적 안내
-            </h3>
-            <p
-              style={{
-                color: "#686e68",
-                lineHeight: "1.75",
-                margin: 0,
-              }}
-            >
-              작업 난이도와 장비 사용 여부, 현장 조건을 확인해 견적을
-              안내합니다.
-            </p>
-          </div>
+              <h3
+                style={{
+                  fontSize: "23px",
+                  margin: "0 0 12px",
+                }}
+              >
+                {item.title}
+              </h3>
 
-          <div
-            style={{
-              background: "#fff",
-              borderRadius: "18px",
-              border: "1px solid #e4e1d7",
-              padding: "30px",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "13px",
-                fontWeight: "900",
-                color: "#796344",
-                marginBottom: "9px",
-              }}
-            >
-              STEP 03
+              <p
+                style={{
+                  color: "#686e68",
+                  lineHeight: "1.75",
+                  margin: 0,
+                }}
+              >
+                {item.desc}
+              </p>
             </div>
-            <h3 style={{ fontSize: "23px", margin: "0 0 12px" }}>
-              작업 및 마무리
-            </h3>
-            <p
-              style={{
-                color: "#686e68",
-                lineHeight: "1.75",
-                margin: 0,
-              }}
-            >
-              현장 안전을 우선으로 작업하고 작업 완료 후 깔끔하게
-              정리합니다.
-            </p>
-          </div>
+          ))}
         </div>
       </section>
 
+      {/* CONTACT */}
       <section
         id="contact"
         style={{
           maxWidth: "1120px",
           margin: "0 auto",
-          padding: "0 24px 90px",
+          padding: "85px 24px 90px",
         }}
       >
         <div
@@ -514,6 +628,7 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FOOTER */}
       <footer
         style={{
           background: "#1c261f",
@@ -537,7 +652,7 @@ export default function Home() {
               marginBottom: "10px",
             }}
           >
-            이지홈케어
+            이지종합건설
           </strong>
 
           <div>대표자 : 송은규</div>
@@ -574,8 +689,8 @@ export default function Home() {
                 }}
               >
                 <p>
-                  이지홈케어는 고객의 개인정보를 중요하게 생각하며 관련
-                  법령에 따라 개인정보를 보호하고 있습니다.
+                  이지종합건설은 고객의 개인정보를 중요하게 생각하며
+                  관련 법령에 따라 개인정보를 보호하고 있습니다.
                 </p>
 
                 <p>
@@ -592,8 +707,8 @@ export default function Home() {
                     2. 개인정보 이용 목적
                   </strong>
                   <br />
-                  수집된 정보는 견적 상담, 현장 확인, 작업 일정 조율,
-                  고객 문의 응대 및 서비스 제공을 위해 이용됩니다.
+                  견적 상담, 현장 확인, 일정 조율, 문의 응대 및 서비스
+                  제공을 위해 이용됩니다.
                 </p>
 
                 <p>
@@ -601,9 +716,8 @@ export default function Home() {
                     3. 개인정보 보유 및 이용기간
                   </strong>
                   <br />
-                  개인정보는 이용 목적이 달성된 후 지체 없이 파기하며,
-                  관계 법령에 따라 보존이 필요한 경우 해당 기간 동안
-                  보관할 수 있습니다.
+                  이용 목적 달성 후 지체 없이 파기하며 관계 법령에 따라
+                  보존이 필요한 경우 해당 기간 동안 보관할 수 있습니다.
                 </p>
 
                 <p>
@@ -611,8 +725,8 @@ export default function Home() {
                     4. 개인정보의 제3자 제공
                   </strong>
                   <br />
-                  이지홈케어는 법령에서 정한 경우를 제외하고 고객의 동의
-                  없이 개인정보를 제3자에게 제공하지 않습니다.
+                  법령에서 정한 경우를 제외하고 고객의 동의 없이 개인정보를
+                  제3자에게 제공하지 않습니다.
                 </p>
 
                 <p>
@@ -634,11 +748,12 @@ export default function Home() {
               color: "#8f9790",
             }}
           >
-            © 2026 EASY HOME CARE. All rights reserved.
+            © 2026 EASY CONSTRUCTION. All rights reserved.
           </div>
         </div>
       </footer>
 
+      {/* FLOATING CALL BUTTON */}
       <a
         href="tel:01023849768"
         style={{
