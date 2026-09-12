@@ -1,18 +1,18 @@
 export default function Home() {
   const services = [
     {
-      title: "벌목 · 나무 제거",
-      desc: "주택, 상가, 공장, 토지 주변의 위험 수목과 불필요한 나무를 안전하게 정리합니다.",
+      title: "벌목 · 위험목 제거",
+      desc: "주택, 상가, 공장, 토지 주변의 위험목·고목·대형수목을 현장 상황에 맞춰 안전하게 정리합니다.",
       icon: "🌳",
     },
     {
       title: "냉장고 철거",
-      desc: "붙박이 냉장고, 대형 냉장고, 냉장고장 철거까지 현장 상황에 맞춰 진행합니다.",
+      desc: "붙박이 냉장고, 대형 냉장고, 냉장고장 철거 등 현장 여건에 맞춰 깔끔하게 진행합니다.",
       icon: "🧊",
     },
     {
       title: "외부 작업",
-      desc: "외부 시설물 철거, 외벽 보수, 렉산, 파라솔, 카스토퍼 등 다양한 외부 작업이 가능합니다.",
+      desc: "외부 시설물 철거, 외벽 보수, 렉산, 파라솔, 카스토퍼 등 다양한 외부 작업을 진행합니다.",
       icon: "🏠",
     },
     {
@@ -26,8 +26,8 @@ export default function Home() {
     <main
       style={{
         margin: 0,
-        background: "#f6f5ef",
-        color: "#1f2a20",
+        background: "#f7f6f0",
+        color: "#1d261f",
         fontFamily:
           "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
       }}
@@ -36,29 +36,30 @@ export default function Home() {
         style={{
           position: "sticky",
           top: 0,
-          zIndex: 10,
-          background: "rgba(255,255,255,0.95)",
-          borderBottom: "1px solid #e7e5dc",
+          zIndex: 20,
+          background: "rgba(255,255,255,0.96)",
+          borderBottom: "1px solid #e7e4da",
+          backdropFilter: "blur(8px)",
         }}
       >
         <div
           style={{
-            maxWidth: "1100px",
+            maxWidth: "1120px",
             margin: "0 auto",
-            padding: "18px 22px",
+            padding: "17px 22px",
             display: "flex",
-            justifyContent: "space-between",
             alignItems: "center",
+            justifyContent: "space-between",
             gap: "20px",
           }}
         >
           <div>
             <div
               style={{
-                fontSize: "24px",
+                fontSize: "25px",
                 fontWeight: "900",
                 letterSpacing: "-1px",
-                color: "#234528",
+                color: "#24462a",
               }}
             >
               이지홈케어
@@ -66,8 +67,8 @@ export default function Home() {
             <div
               style={{
                 fontSize: "12px",
-                color: "#73786f",
                 marginTop: "3px",
+                color: "#6f756e",
               }}
             >
               벌목 · 철거 · 외부작업 전문
@@ -75,18 +76,18 @@ export default function Home() {
           </div>
 
           <a
-            href="#contact"
+            href="tel:01023849768"
             style={{
               textDecoration: "none",
-              background: "#234528",
+              background: "#24462a",
               color: "#fff",
-              padding: "12px 17px",
+              padding: "12px 16px",
               borderRadius: "10px",
-              fontWeight: "800",
               fontSize: "14px",
+              fontWeight: "900",
             }}
           >
-            견적 문의
+            전화 견적
           </a>
         </div>
       </header>
@@ -94,93 +95,93 @@ export default function Home() {
       <section
         style={{
           background:
-            "linear-gradient(135deg, #1f3b24 0%, #34583a 55%, #806a45 100%)",
+            "linear-gradient(135deg, #19391f 0%, #31583a 52%, #77613f 100%)",
           color: "#fff",
         }}
       >
         <div
           style={{
-            maxWidth: "1100px",
+            maxWidth: "1120px",
             margin: "0 auto",
-            padding: "95px 24px 90px",
+            padding: "100px 24px 95px",
           }}
         >
           <div
             style={{
               display: "inline-block",
-              background: "rgba(255,255,255,0.14)",
-              padding: "8px 13px",
+              padding: "8px 14px",
               borderRadius: "999px",
+              background: "rgba(255,255,255,0.14)",
               fontSize: "14px",
-              fontWeight: "700",
+              fontWeight: "800",
               marginBottom: "22px",
             }}
           >
-            벌목 전문 · 현장 맞춤 작업
+            벌목 전문 · 현장 맞춤 시공
           </div>
 
           <h1
             style={{
-              fontSize: "clamp(40px, 8vw, 72px)",
-              lineHeight: "1.08",
-              margin: "0 0 24px",
-              letterSpacing: "-3px",
+              margin: 0,
               maxWidth: "850px",
+              fontSize: "clamp(42px, 8vw, 74px)",
+              lineHeight: "1.08",
+              letterSpacing: "-3px",
             }}
           >
-            위험한 나무부터
+            위험목 · 고목 · 대형수목
             <br />
-            철거·외부작업까지
+            벌목 전문
           </h1>
 
           <p
             style={{
-              margin: 0,
-              maxWidth: "650px",
+              maxWidth: "680px",
+              margin: "25px 0 0",
               fontSize: "18px",
               lineHeight: "1.8",
-              color: "rgba(255,255,255,0.85)",
+              color: "rgba(255,255,255,0.86)",
             }}
           >
-            현장 상황을 정확하게 확인하고 필요한 작업만 깔끔하게 진행합니다.
-            벌목, 냉장고 철거, 외부 시설물 작업과 다양한 집수리까지
-            이지홈케어에 문의하세요.
+            주택 · 공장 · 상가 · 토지 현장 확인부터 안전한 벌목과 정리까지.
+            냉장고 철거, 외부 시설물 철거 및 각종 외부작업도 함께
+            진행합니다.
           </p>
 
           <div
             style={{
-              marginTop: "34px",
               display: "flex",
               flexWrap: "wrap",
               gap: "12px",
+              marginTop: "34px",
             }}
           >
             <a
-              href="#contact"
+              href="tel:01023849768"
               style={{
                 textDecoration: "none",
-                color: "#1f2a20",
                 background: "#fff",
+                color: "#1f3423",
                 padding: "15px 22px",
                 borderRadius: "12px",
                 fontWeight: "900",
               }}
             >
-              빠른 견적 문의
+              📞 010-2384-9768
             </a>
 
             <a
               href="#services"
               style={{
                 textDecoration: "none",
-                color: "#fff",
                 border: "1px solid rgba(255,255,255,0.55)",
+                color: "#fff",
                 padding: "15px 22px",
                 borderRadius: "12px",
                 fontWeight: "800",
               }}
             >
-              서비스 보기
+              작업 서비스 보기
             </a>
           </div>
         </div>
@@ -189,21 +190,17 @@ export default function Home() {
       <section
         id="services"
         style={{
-          maxWidth: "1100px",
+          maxWidth: "1120px",
           margin: "0 auto",
           padding: "85px 24px",
         }}
       >
-        <div
-          style={{
-            marginBottom: "35px",
-          }}
-        >
+        <div style={{ marginBottom: "35px" }}>
           <div
             style={{
               fontSize: "14px",
+              color: "#796344",
               fontWeight: "900",
-              color: "#7a6545",
               marginBottom: "10px",
             }}
           >
@@ -217,17 +214,18 @@ export default function Home() {
               letterSpacing: "-1.8px",
             }}
           >
-            주요 작업
+            주요 작업 서비스
           </h2>
 
           <p
             style={{
-              color: "#6c716a",
+              color: "#697069",
               lineHeight: "1.7",
               marginTop: "13px",
             }}
           >
-            현장 규모와 작업 조건에 맞춰 필요한 방식으로 진행합니다.
+            현장 규모와 작업 환경에 따라 필요한 방식으로 안전하게
+            진행합니다.
           </p>
         </div>
 
@@ -243,15 +241,15 @@ export default function Home() {
               key={service.title}
               style={{
                 background: "#fff",
-                border: "1px solid #e5e3da",
+                border: "1px solid #e5e2d8",
                 borderRadius: "18px",
                 padding: "28px",
-                boxShadow: "0 8px 30px rgba(34,48,36,0.05)",
+                boxShadow: "0 8px 30px rgba(30,48,35,0.05)",
               }}
             >
               <div
                 style={{
-                  fontSize: "37px",
+                  fontSize: "38px",
                   marginBottom: "18px",
                 }}
               >
@@ -270,7 +268,7 @@ export default function Home() {
               <p
                 style={{
                   margin: 0,
-                  color: "#676d65",
+                  color: "#666d66",
                   lineHeight: "1.75",
                   fontSize: "15px",
                 }}
@@ -284,64 +282,163 @@ export default function Home() {
 
       <section
         style={{
-          background: "#ebe9df",
+          background: "#ece9df",
         }}
       >
         <div
           style={{
-            maxWidth: "1100px",
+            maxWidth: "1120px",
             margin: "0 auto",
-            padding: "75px 24px",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "24px",
+            padding: "80px 24px",
           }}
         >
-          <div>
+          <div
+            style={{
+              fontSize: "14px",
+              fontWeight: "900",
+              color: "#796344",
+              marginBottom: "10px",
+            }}
+          >
+            WORK AREA
+          </div>
+
+          <h2
+            style={{
+              margin: "0 0 18px",
+              fontSize: "36px",
+              letterSpacing: "-1.5px",
+            }}
+          >
+            출장 가능 지역
+          </h2>
+
+          <p
+            style={{
+              margin: 0,
+              fontSize: "17px",
+              lineHeight: "1.8",
+              color: "#5e665f",
+            }}
+          >
+            서울 · 경기 · 인천 · 충남 · 충북
+            <br />
+            그 외 지역은 현장 상황에 따라 문의해주세요.
+          </p>
+        </div>
+      </section>
+
+      <section
+        style={{
+          maxWidth: "1120px",
+          margin: "0 auto",
+          padding: "85px 24px",
+        }}
+      >
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
+            gap: "22px",
+            alignItems: "stretch",
+          }}
+        >
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "18px",
+              border: "1px solid #e4e1d7",
+              padding: "30px",
+            }}
+          >
             <div
               style={{
-                fontSize: "14px",
+                fontSize: "13px",
                 fontWeight: "900",
-                color: "#7a6545",
-                marginBottom: "10px",
+                color: "#796344",
+                marginBottom: "9px",
               }}
             >
-              WORK PROCESS
+              STEP 01
             </div>
-
-            <h2
+            <h3 style={{ fontSize: "23px", margin: "0 0 12px" }}>
+              현장 상담
+            </h3>
+            <p
               style={{
-                fontSize: "34px",
-                margin: "0 0 18px",
-                letterSpacing: "-1.5px",
+                color: "#686e68",
+                lineHeight: "1.75",
+                margin: 0,
               }}
             >
-              현장 확인부터
-              <br />
-              마무리까지 깔끔하게
-            </h2>
+              작업 위치, 현장 사진, 수목 크기 또는 철거 대상 정보를
+              확인합니다.
+            </p>
           </div>
 
           <div
             style={{
               background: "#fff",
-              borderRadius: "16px",
-              padding: "26px",
+              borderRadius: "18px",
+              border: "1px solid #e4e1d7",
+              padding: "30px",
             }}
           >
-            <strong>01. 현장 상담</strong>
-            <p style={{ color: "#686d66", lineHeight: "1.7" }}>
-              작업 내용과 현장 사진을 확인해 작업 가능 여부를 상담합니다.
+            <div
+              style={{
+                fontSize: "13px",
+                fontWeight: "900",
+                color: "#796344",
+                marginBottom: "9px",
+              }}
+            >
+              STEP 02
+            </div>
+            <h3 style={{ fontSize: "23px", margin: "0 0 12px" }}>
+              견적 안내
+            </h3>
+            <p
+              style={{
+                color: "#686e68",
+                lineHeight: "1.75",
+                margin: 0,
+              }}
+            >
+              작업 난이도와 장비 사용 여부, 현장 조건을 확인해 견적을
+              안내합니다.
             </p>
+          </div>
 
-            <strong>02. 견적 안내</strong>
-            <p style={{ color: "#686d66", lineHeight: "1.7" }}>
-              현장 규모, 난이도, 장비 사용 여부에 따라 견적을 안내합니다.
-            </p>
-
-            <strong>03. 시공 및 정리</strong>
-            <p style={{ color: "#686d66", lineHeight: "1.7", marginBottom: 0 }}>
-              안전하게 작업하고 현장을 정리한 뒤 마무리합니다.
+          <div
+            style={{
+              background: "#fff",
+              borderRadius: "18px",
+              border: "1px solid #e4e1d7",
+              padding: "30px",
+            }}
+          >
+            <div
+              style={{
+                fontSize: "13px",
+                fontWeight: "900",
+                color: "#796344",
+                marginBottom: "9px",
+              }}
+            >
+              STEP 03
+            </div>
+            <h3 style={{ fontSize: "23px", margin: "0 0 12px" }}>
+              작업 및 마무리
+            </h3>
+            <p
+              style={{
+                color: "#686e68",
+                lineHeight: "1.75",
+                margin: 0,
+              }}
+            >
+              현장 안전을 우선으로 작업하고 작업 완료 후 깔끔하게
+              정리합니다.
             </p>
           </div>
         </div>
@@ -350,104 +447,137 @@ export default function Home() {
       <section
         id="contact"
         style={{
-          maxWidth: "1100px",
+          maxWidth: "1120px",
           margin: "0 auto",
-          padding: "85px 24px",
+          padding: "0 24px 90px",
         }}
       >
         <div
           style={{
-            background: "#234528",
-            borderRadius: "22px",
-            padding: "45px 28px",
+            background: "#234529",
             color: "#fff",
+            borderRadius: "24px",
+            padding: "50px 28px",
             textAlign: "center",
           }}
         >
           <div
             style={{
               fontSize: "14px",
-              fontWeight: "800",
+              fontWeight: "900",
               opacity: 0.8,
               marginBottom: "12px",
             }}
           >
-            EASY HOME CARE
+            빠른 견적 상담
           </div>
 
           <h2
             style={{
-              fontSize: "34px",
               margin: "0 0 15px",
+              fontSize: "36px",
               letterSpacing: "-1.5px",
             }}
           >
-            현장 사진으로 빠르게 상담하세요
+            현장 사진과 함께 문의해주세요
           </h2>
 
           <p
             style={{
               margin: "0 auto",
-              maxWidth: "600px",
+              maxWidth: "620px",
+              color: "rgba(255,255,255,0.82)",
               lineHeight: "1.8",
-              color: "rgba(255,255,255,0.8)",
             }}
           >
-            벌목, 냉장고 철거, 외부 작업, 기타 집수리까지
+            벌목 · 위험목 제거 · 냉장고 철거 · 외부작업 · 기타 집수리
+            <br />
             작업 위치와 사진을 보내주시면 확인 후 상담해드립니다.
           </p>
 
-          <div
+          <a
+            href="tel:01023849768"
             style={{
+              display: "inline-block",
               marginTop: "28px",
-              display: "flex",
-              justifyContent: "center",
-              gap: "12px",
-              flexWrap: "wrap",
+              textDecoration: "none",
+              background: "#fff",
+              color: "#234529",
+              padding: "15px 24px",
+              borderRadius: "11px",
+              fontWeight: "900",
+              fontSize: "17px",
             }}
           >
-            <a
-              href="#"
-              style={{
-                textDecoration: "none",
-                background: "#fff",
-                color: "#234528",
-                padding: "14px 22px",
-                borderRadius: "10px",
-                fontWeight: "900",
-              }}
-            >
-              전화 견적 문의
-            </a>
-
-            <a
-              href="#"
-              style={{
-                textDecoration: "none",
-                background: "#f5db4c",
-                color: "#222",
-                padding: "14px 22px",
-                borderRadius: "10px",
-                fontWeight: "900",
-              }}
-            >
-              카카오톡 상담
-            </a>
-          </div>
+            📞 010-2384-9768 전화 견적
+          </a>
         </div>
       </section>
 
       <footer
         style={{
-          borderTop: "1px solid #e1dfd6",
-          padding: "30px 24px",
-          textAlign: "center",
-          color: "#80847d",
-          fontSize: "13px",
+          background: "#1c261f",
+          color: "#c9cec8",
+          padding: "38px 24px",
         }}
       >
-        © 2026 이지홈케어 · 벌목 · 철거 · 외부작업 · 집수리
+        <div
+          style={{
+            maxWidth: "1120px",
+            margin: "0 auto",
+            fontSize: "13px",
+            lineHeight: "1.8",
+          }}
+        >
+          <strong
+            style={{
+              display: "block",
+              color: "#fff",
+              fontSize: "18px",
+              marginBottom: "8px",
+            }}
+          >
+            이지홈케어
+          </strong>
+
+          <div>벌목 · 철거 · 외부작업 · 집수리</div>
+          <div>전화 : 010-2384-9768</div>
+          <div>사업자등록번호 : 882-06-03153</div>
+
+          <div
+            style={{
+              marginTop: "18px",
+              color: "#8f9790",
+            }}
+          >
+            © 2026 EASY HOME CARE. All rights reserved.
+          </div>
+        </div>
       </footer>
+
+      <a
+        href="tel:01023849768"
+        style={{
+          position: "fixed",
+          right: "18px",
+          bottom: "18px",
+          zIndex: 50,
+          width: "58px",
+          height: "58px",
+          borderRadius: "50%",
+          background: "#234529",
+          color: "#fff",
+          textDecoration: "none",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: "25px",
+          boxShadow: "0 8px 25px rgba(0,0,0,0.2)",
+        }}
+        aria-label="전화 문의"
+      >
+        ☎
+      </a>
     </main>
   );
 }
