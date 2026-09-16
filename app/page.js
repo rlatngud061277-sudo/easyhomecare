@@ -11,7 +11,7 @@ export default function Home() {
     {
       title: "벌목 · 나무 제거",
       desc: "좁은 공간, 주택가, 건물 주변 등 현장 상황에 맞춰 벌목 및 나무 제거 작업을 진행합니다.",
-      image: "/F43681CE-3D8F-416F-AF29-CE598133364F8.png",
+      image: "/F43681CE-3D8F-416F-AF29-CE59813364F8.png",
     },
     {
       title: "에어컨 배선 테이핑",
