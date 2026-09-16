@@ -1,782 +1,667 @@
+"use client";
+
+import { useState } from "react";
+
 export default function Home() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const services = [
     {
-      title: "벌목 · 위험목 제거",
-      desc: "주택, 상가, 공장, 토지 주변의 위험목·고목·대형수목을 현장 상황에 맞춰 안전하게 정리합니다.",
-      icon: "🌳",
+      title: "벌목 · 나무 제거",
+      desc: "주택, 상가, 공장 등 좁은 공간 및 위험목 벌목 작업",
+      image: "/F43681CE-3D8F-416F-AF29-CE598133364F8.png",
     },
     {
-      title: "냉장고 철거",
-      desc: "붙박이 냉장고, 대형 냉장고, 냉장고장 철거 등 현장 여건에 맞춰 깔끔하게 진행합니다.",
-      icon: "🧊",
+      title: "에어컨 배선 테이핑",
+      desc: "노후된 에어컨 배관 및 배선 테이핑 보수",
+      image: "/4CD1D8DB-15F0-408B-B121-14B8DE5EFE19.png",
     },
     {
-      title: "외부 작업",
-      desc: "외부 시설물 철거, 외벽 보수, 렉산, 파라솔, 카스토퍼 등 다양한 외부 작업을 진행합니다.",
-      icon: "🏠",
+      title: "방범창살 설치",
+      desc: "주택 및 빌라 방범창살 설치·보수",
+      image: "/63C20778-04FD-4E09-8C17-4318D20C2C49.png",
     },
     {
-      title: "기타 집수리",
-      desc: "생활 중 필요한 각종 설치, 철거, 보수 작업도 함께 상담 가능합니다.",
-      icon: "🛠️",
+      title: "대형 거울 설치",
+      desc: "가정집·상가 대형 거울 안전 설치",
+      image: "/D0726F84-4F5C-48E8-B6B6-67AB7B722759.png",
+    },
+    {
+      title: "선반 보강",
+      desc: "처진 선반 및 벽선반 설치·보강 작업",
+      image: "/A8739EC2-FB40-407E-8651-727243E1FB11.png",
+    },
+    {
+      title: "파라솔 설치",
+      desc: "테라스·옥상·야외공간 대형 파라솔 설치",
+      image: "/98F2595E-43F2-41CC-A8FF-95581E24C025.png",
+    },
+    {
+      title: "빨래건조대 설치",
+      desc: "베란다 천장형 빨래건조대 설치 및 교체",
+      image: "/1BCC4677-17D0-4FCA-8D3E-EFFBE2E1268A.png",
     },
   ];
 
-  const portfolio = [
-    {
-      title: "대형 수목 벌목 작업",
-      category: "벌목 시공",
-      image: "/work1.jpg",
-    },
-    {
-      title: "위험목 제거 작업",
-      category: "벌목 시공",
-      image: "/work2.jpg",
-    },
-    {
-      title: "냉장고 철거 작업",
-      category: "철거 시공",
-      image: "/work3.jpg",
-    },
-    {
-      title: "외부 시설물 보수",
-      category: "외부 작업",
-      image: "/work4.jpg",
-    },
-    {
-      title: "렉산 및 외부 보수",
-      category: "외부 작업",
-      image: "/work5.jpg",
-    },
-    {
-      title: "생활 집수리 현장",
-      category: "집수리",
-      image: "/work6.jpg",
-    },
-  ];
+  const callNumber = "01023849768";
 
   return (
-    <main
-      style={{
-        margin: 0,
-        background: "#f7f6f0",
-        color: "#1d261f",
-        fontFamily:
-          "-apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
-      }}
-    >
-      {/* HEADER */}
-      <header
-        style={{
-          position: "sticky",
-          top: 0,
-          zIndex: 20,
-          background: "rgba(255,255,255,0.96)",
-          borderBottom: "1px solid #e7e4da",
-          backdropFilter: "blur(8px)",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1120px",
-            margin: "0 auto",
-            padding: "17px 22px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            gap: "20px",
-          }}
-        >
-          <div>
-            <div
-              style={{
-                fontSize: "25px",
-                fontWeight: "900",
-                letterSpacing: "-1px",
-                color: "#24462a",
-              }}
-            >
-              이지종합건설
-            </div>
+    <>
+      <style jsx global>{`
+        * {
+          box-sizing: border-box;
+          margin: 0;
+          padding: 0;
+        }
 
-            <div
-              style={{
-                fontSize: "12px",
-                marginTop: "3px",
-                color: "#6f756e",
-              }}
-            >
-              벌목 · 철거 · 외부작업 · 집수리
-            </div>
-          </div>
+        html {
+          scroll-behavior: smooth;
+        }
 
-          <a
-            href="tel:01023849768"
-            style={{
-              textDecoration: "none",
-              background: "#24462a",
-              color: "#fff",
-              padding: "12px 16px",
-              borderRadius: "10px",
-              fontSize: "14px",
-              fontWeight: "900",
-            }}
-          >
-            전화 견적
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, "Pretendard",
+            "Noto Sans KR", Arial, sans-serif;
+          background: #f7f8f6;
+          color: #18211a;
+          word-break: keep-all;
+        }
+
+        a {
+          text-decoration: none;
+          color: inherit;
+        }
+
+        header {
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          background: rgba(255, 255, 255, 0.96);
+          border-bottom: 1px solid #e8e8e8;
+          backdrop-filter: blur(10px);
+        }
+
+        .nav {
+          max-width: 1180px;
+          margin: auto;
+          height: 72px;
+          padding: 0 24px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .logo {
+          font-size: 24px;
+          font-weight: 900;
+          color: #1d5b39;
+          letter-spacing: -1px;
+        }
+
+        .logo span {
+          color: #222;
+        }
+
+        .navLinks {
+          display: flex;
+          gap: 28px;
+          align-items: center;
+          font-size: 15px;
+          font-weight: 700;
+        }
+
+        .callTop {
+          background: #1d5b39;
+          color: white;
+          padding: 12px 18px;
+          border-radius: 10px;
+        }
+
+        .menuButton {
+          display: none;
+          border: 0;
+          background: transparent;
+          font-size: 27px;
+        }
+
+        .hero {
+          min-height: 620px;
+          display: flex;
+          align-items: center;
+          background:
+            linear-gradient(
+              90deg,
+              rgba(9, 25, 15, 0.88),
+              rgba(9, 25, 15, 0.55),
+              rgba(9, 25, 15, 0.15)
+            ),
+            url("/F43681CE-3D8F-416F-AF29-CE598133364F8.png")
+              center/cover no-repeat;
+          color: white;
+        }
+
+        .heroInner {
+          width: 100%;
+          max-width: 1180px;
+          margin: auto;
+          padding: 80px 24px;
+        }
+
+        .badge {
+          display: inline-block;
+          background: rgba(255, 255, 255, 0.16);
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          padding: 9px 14px;
+          border-radius: 30px;
+          font-size: 14px;
+          margin-bottom: 20px;
+        }
+
+        .hero h1 {
+          font-size: clamp(42px, 7vw, 72px);
+          line-height: 1.12;
+          letter-spacing: -3px;
+          margin-bottom: 22px;
+        }
+
+        .hero h1 strong {
+          color: #b8e986;
+        }
+
+        .hero p {
+          font-size: 19px;
+          line-height: 1.8;
+          color: #f1f1f1;
+          max-width: 610px;
+          margin-bottom: 30px;
+        }
+
+        .heroButtons {
+          display: flex;
+          gap: 12px;
+          flex-wrap: wrap;
+        }
+
+        .primaryBtn,
+        .secondaryBtn {
+          padding: 16px 22px;
+          border-radius: 12px;
+          font-weight: 800;
+          font-size: 16px;
+        }
+
+        .primaryBtn {
+          background: #ffffff;
+          color: #173c27;
+        }
+
+        .secondaryBtn {
+          border: 1px solid rgba(255, 255, 255, 0.7);
+          color: white;
+        }
+
+        section {
+          padding: 90px 24px;
+        }
+
+        .container {
+          max-width: 1180px;
+          margin: auto;
+        }
+
+        .sectionLabel {
+          color: #28744b;
+          font-weight: 900;
+          font-size: 14px;
+          margin-bottom: 10px;
+        }
+
+        .sectionTitle {
+          font-size: 36px;
+          letter-spacing: -1.8px;
+          margin-bottom: 12px;
+        }
+
+        .sectionDesc {
+          color: #667068;
+          line-height: 1.8;
+          margin-bottom: 40px;
+        }
+
+        .services {
+          background: white;
+        }
+
+        .serviceGrid {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 22px;
+        }
+
+        .card {
+          background: white;
+          border: 1px solid #e5e8e5;
+          border-radius: 18px;
+          overflow: hidden;
+          transition: 0.2s;
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+        }
+
+        .card:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
+        }
+
+        .cardImage {
+          width: 100%;
+          aspect-ratio: 4 / 3;
+          object-fit: cover;
+          display: block;
+        }
+
+        .cardBody {
+          padding: 22px;
+        }
+
+        .cardBody h3 {
+          font-size: 21px;
+          margin-bottom: 9px;
+        }
+
+        .cardBody p {
+          color: #707870;
+          line-height: 1.65;
+          font-size: 14px;
+        }
+
+        .aboutGrid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 45px;
+          align-items: center;
+        }
+
+        .aboutBox {
+          background: #eaf2ec;
+          border-radius: 24px;
+          padding: 42px;
+        }
+
+        .aboutBox h3 {
+          font-size: 28px;
+          margin-bottom: 20px;
+        }
+
+        .check {
+          padding: 12px 0;
+          border-bottom: 1px solid #d2dfd5;
+          font-weight: 700;
+        }
+
+        .area {
+          background: #173c27;
+          color: white;
+        }
+
+        .area .sectionLabel {
+          color: #b8e986;
+        }
+
+        .area .sectionDesc {
+          color: #d8e2da;
+        }
+
+        .areaTags {
+          display: flex;
+          gap: 10px;
+          flex-wrap: wrap;
+        }
+
+        .areaTag {
+          padding: 13px 18px;
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.18);
+          border-radius: 30px;
+          font-weight: 800;
+        }
+
+        .contactBox {
+          text-align: center;
+          background: white;
+          padding: 55px 25px;
+          border-radius: 24px;
+          border: 1px solid #e5e8e5;
+        }
+
+        .contactBox h2 {
+          font-size: 36px;
+          margin-bottom: 15px;
+        }
+
+        .contactBox p {
+          color: #687069;
+          line-height: 1.8;
+          margin-bottom: 25px;
+        }
+
+        .bigCall {
+          display: inline-block;
+          background: #1d5b39;
+          color: white;
+          padding: 18px 28px;
+          border-radius: 13px;
+          font-size: 20px;
+          font-weight: 900;
+        }
+
+        footer {
+          background: #121713;
+          color: #c9cfca;
+          padding: 42px 24px 100px;
+          font-size: 13px;
+          line-height: 1.9;
+        }
+
+        .footerInner {
+          max-width: 1180px;
+          margin: auto;
+        }
+
+        .footerLogo {
+          color: white;
+          font-size: 21px;
+          font-weight: 900;
+          margin-bottom: 15px;
+        }
+
+        .floatingCall {
+          position: fixed;
+          right: 18px;
+          bottom: 20px;
+          z-index: 200;
+          background: #1d5b39;
+          color: white;
+          padding: 15px 19px;
+          border-radius: 50px;
+          font-weight: 900;
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+        }
+
+        @media (max-width: 850px) {
+          .navLinks {
+            display: none;
+          }
+
+          .menuButton {
+            display: block;
+          }
+
+          .mobileMenu {
+            display: ${menuOpen ? "block" : "none"};
+            background: white;
+            padding: 10px 24px 22px;
+            border-top: 1px solid #eee;
+          }
+
+          .mobileMenu a {
+            display: block;
+            padding: 13px 0;
+            font-weight: 800;
+          }
+
+          .hero {
+            min-height: 570px;
+          }
+
+          .hero h1 {
+            letter-spacing: -2px;
+          }
+
+          .serviceGrid {
+            grid-template-columns: 1fr 1fr;
+          }
+
+          .aboutGrid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        @media (max-width: 560px) {
+          .nav {
+            height: 64px;
+            padding: 0 18px;
+          }
+
+          .logo {
+            font-size: 21px;
+          }
+
+          .heroInner {
+            padding: 65px 20px;
+          }
+
+          .hero h1 {
+            font-size: 43px;
+          }
+
+          .hero p {
+            font-size: 16px;
+          }
+
+          section {
+            padding: 65px 18px;
+          }
+
+          .sectionTitle {
+            font-size: 29px;
+          }
+
+          .serviceGrid {
+            grid-template-columns: 1fr;
+          }
+
+          .cardImage {
+            aspect-ratio: 16 / 10;
+          }
+
+          .aboutBox {
+            padding: 28px 22px;
+          }
+
+          .contactBox h2 {
+            font-size: 28px;
+          }
+        }
+      `}</style>
+
+      <header>
+        <div className="nav">
+          <a href="#" className="logo">
+            이지<span>홈케어</span>
           </a>
+
+          <nav className="navLinks">
+            <a href="#services">서비스</a>
+            <a href="#cases">시공사례</a>
+            <a href="#area">서비스지역</a>
+            <a href="#contact">견적문의</a>
+            <a className="callTop" href={`tel:${callNumber}`}>
+              전화 문의
+            </a>
+          </nav>
+
+          <button
+            className="menuButton"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="메뉴"
+          >
+            ☰
+          </button>
+        </div>
+
+        <div className="mobileMenu">
+          <a href="#services" onClick={() => setMenuOpen(false)}>
+            서비스
+          </a>
+          <a href="#cases" onClick={() => setMenuOpen(false)}>
+            시공사례
+          </a>
+          <a href="#area" onClick={() => setMenuOpen(false)}>
+            서비스 지역
+          </a>
+          <a href={`tel:${callNumber}`}>☎ 전화 견적 문의</a>
         </div>
       </header>
 
-      {/* HERO */}
-      <section
-        style={{
-          background:
-            "linear-gradient(135deg, #19391f 0%, #31583a 52%, #77613f 100%)",
-          color: "#fff",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1120px",
-            margin: "0 auto",
-            padding: "100px 24px 95px",
-          }}
-        >
-          <div
-            style={{
-              display: "inline-block",
-              padding: "8px 14px",
-              borderRadius: "999px",
-              background: "rgba(255,255,255,0.14)",
-              fontSize: "14px",
-              fontWeight: "800",
-              marginBottom: "22px",
-            }}
-          >
-            벌목 전문 · 현장 맞춤 시공
-          </div>
+      <main>
+        <section className="hero">
+          <div className="heroInner">
+            <div className="badge">현장 맞춤 시공 · 출장 작업</div>
 
-          <h1
-            style={{
-              margin: 0,
-              maxWidth: "850px",
-              fontSize: "clamp(42px, 8vw, 74px)",
-              lineHeight: "1.08",
-              letterSpacing: "-3px",
-            }}
-          >
-            위험목 · 고목 · 대형수목
-            <br />
-            벌목 전문
-          </h1>
+            <h1>
+              집 안부터 외부까지
+              <br />
+              필요한 작업을
+              <br />
+              <strong>한 번에.</strong>
+            </h1>
 
-          <p
-            style={{
-              maxWidth: "680px",
-              margin: "25px 0 0",
-              fontSize: "18px",
-              lineHeight: "1.8",
-              color: "rgba(255,255,255,0.86)",
-            }}
-          >
-            주택 · 공장 · 상가 · 토지 현장 확인부터 안전한 벌목과
-            정리까지.
-            <br />
-            냉장고 철거, 외부 시설물 철거, 외벽 보수 및 각종 집수리도
-            함께 진행합니다.
-          </p>
-
-          <div
-            style={{
-              display: "flex",
-              flexWrap: "wrap",
-              gap: "12px",
-              marginTop: "34px",
-            }}
-          >
-            <a
-              href="tel:01023849768"
-              style={{
-                textDecoration: "none",
-                background: "#fff",
-                color: "#1f3423",
-                padding: "15px 22px",
-                borderRadius: "12px",
-                fontWeight: "900",
-              }}
-            >
-              📞 010-2384-9768
-            </a>
-
-            <a
-              href="#portfolio"
-              style={{
-                textDecoration: "none",
-                border: "1px solid rgba(255,255,255,0.55)",
-                color: "#fff",
-                padding: "15px 22px",
-                borderRadius: "12px",
-                fontWeight: "800",
-              }}
-            >
-              시공사례 보기
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* SERVICES */}
-      <section
-        id="services"
-        style={{
-          maxWidth: "1120px",
-          margin: "0 auto",
-          padding: "85px 24px",
-        }}
-      >
-        <div style={{ marginBottom: "35px" }}>
-          <div
-            style={{
-              fontSize: "14px",
-              color: "#796344",
-              fontWeight: "900",
-              marginBottom: "10px",
-            }}
-          >
-            EASY CONSTRUCTION
-          </div>
-
-          <h2
-            style={{
-              margin: 0,
-              fontSize: "38px",
-              letterSpacing: "-1.8px",
-            }}
-          >
-            주요 작업 서비스
-          </h2>
-
-          <p
-            style={{
-              color: "#697069",
-              lineHeight: "1.7",
-              marginTop: "13px",
-            }}
-          >
-            현장 규모와 작업 환경에 따라 필요한 방식으로 안전하게
-            진행합니다.
-          </p>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(230px, 1fr))",
-            gap: "18px",
-          }}
-        >
-          {services.map((service) => (
-            <div
-              key={service.title}
-              style={{
-                background: "#fff",
-                border: "1px solid #e5e2d8",
-                borderRadius: "18px",
-                padding: "28px",
-                boxShadow: "0 8px 30px rgba(30,48,35,0.05)",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "38px",
-                  marginBottom: "18px",
-                }}
-              >
-                {service.icon}
-              </div>
-
-              <h3
-                style={{
-                  margin: "0 0 12px",
-                  fontSize: "21px",
-                }}
-              >
-                {service.title}
-              </h3>
-
-              <p
-                style={{
-                  margin: 0,
-                  color: "#666d66",
-                  lineHeight: "1.75",
-                  fontSize: "15px",
-                }}
-              >
-                {service.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* PORTFOLIO */}
-      <section
-        id="portfolio"
-        style={{
-          background: "#ece9df",
-          padding: "85px 24px",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1120px",
-            margin: "0 auto",
-          }}
-        >
-          <div
-            style={{
-              marginBottom: "35px",
-            }}
-          >
-            <div
-              style={{
-                fontSize: "14px",
-                fontWeight: "900",
-                color: "#796344",
-                marginBottom: "10px",
-              }}
-            >
-              PORTFOLIO
-            </div>
-
-            <h2
-              style={{
-                margin: 0,
-                fontSize: "38px",
-                letterSpacing: "-1.8px",
-              }}
-            >
-              시공사례
-            </h2>
-
-            <p
-              style={{
-                color: "#697069",
-                lineHeight: "1.7",
-                marginTop: "13px",
-              }}
-            >
-              실제 작업 사진을 등록해 이지종합건설의 시공 현장을
-              확인하실 수 있습니다.
+            <p>
+              벌목부터 방범창, 에어컨 배선 테이핑, 대형 거울,
+              빨래건조대, 선반 보강 등 다양한 생활·외부 시공을
+              도와드립니다.
             </p>
-          </div>
 
-          <div
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))",
-              gap: "20px",
-            }}
-          >
-            {portfolio.map((item) => (
-              <div
-                key={item.title}
-                style={{
-                  background: "#fff",
-                  borderRadius: "18px",
-                  overflow: "hidden",
-                  border: "1px solid #dfddd3",
-                }}
-              >
-                <div
-                  style={{
-                    height: "220px",
-                    background: "#d8d8d2",
-                    position: "relative",
-                    overflow: "hidden",
-                  }}
-                >
+            <div className="heroButtons">
+              <a href={`tel:${callNumber}`} className="primaryBtn">
+                ☎ 전화 견적 문의
+              </a>
+              <a href="#cases" className="secondaryBtn">
+                시공사례 보기
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section className="services" id="services">
+          <div className="container">
+            <div className="sectionLabel">EASY HOME CARE</div>
+            <h2 className="sectionTitle">어떤 작업이 필요하세요?</h2>
+            <p className="sectionDesc">
+              작은 집수리부터 외부 작업까지 현장 상황에 맞춰
+              상담해드립니다.
+            </p>
+
+            <div className="serviceGrid" id="cases">
+              {services.map((item, index) => (
+                <article className="card" key={index}>
                   <img
                     src={item.image}
-                    alt={item.title}
-                    style={{
-                      width: "100%",
-                      height: "100%",
-                      objectFit: "cover",
-                    }}
+                    alt={`${item.title} 시공사례`}
+                    className="cardImage"
+                    loading="lazy"
                   />
-                </div>
-
-                <div
-                  style={{
-                    padding: "20px",
-                  }}
-                >
-                  <div
-                    style={{
-                      color: "#796344",
-                      fontSize: "12px",
-                      fontWeight: "900",
-                      marginBottom: "8px",
-                    }}
-                  >
-                    {item.category}
+                  <div className="cardBody">
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
                   </div>
-
-                  <h3
-                    style={{
-                      margin: 0,
-                      fontSize: "19px",
-                    }}
-                  >
-                    {item.title}
-                  </h3>
-                </div>
-              </div>
-            ))}
+                </article>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* AREA */}
-      <section
-        style={{
-          maxWidth: "1120px",
-          margin: "0 auto",
-          padding: "80px 24px",
-        }}
-      >
-        <div
-          style={{
-            fontSize: "14px",
-            fontWeight: "900",
-            color: "#796344",
-            marginBottom: "10px",
-          }}
-        >
-          WORK AREA
-        </div>
-
-        <h2
-          style={{
-            margin: "0 0 18px",
-            fontSize: "36px",
-            letterSpacing: "-1.5px",
-          }}
-        >
-          출장 가능 지역
-        </h2>
-
-        <p
-          style={{
-            margin: 0,
-            fontSize: "17px",
-            lineHeight: "1.8",
-            color: "#5e665f",
-          }}
-        >
-          서울 · 경기 · 인천 · 충남 · 충북
-          <br />
-          그 외 지역은 현장 상황에 따라 문의해주세요.
-        </p>
-      </section>
-
-      {/* PROCESS */}
-      <section
-        style={{
-          background: "#f1efe7",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1120px",
-            margin: "0 auto",
-            padding: "85px 24px",
-            display: "grid",
-            gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: "22px",
-          }}
-        >
-          {[
-            {
-              step: "STEP 01",
-              title: "현장 상담",
-              desc: "작업 위치, 현장 사진, 수목 크기 또는 철거 대상 정보를 확인합니다.",
-            },
-            {
-              step: "STEP 02",
-              title: "견적 안내",
-              desc: "작업 난이도, 현장 조건, 장비 사용 여부를 확인해 견적을 안내합니다.",
-            },
-            {
-              step: "STEP 03",
-              title: "작업 및 마무리",
-              desc: "현장 안전을 우선으로 시공하고 작업 완료 후 깔끔하게 정리합니다.",
-            },
-          ].map((item) => (
-            <div
-              key={item.step}
-              style={{
-                background: "#fff",
-                borderRadius: "18px",
-                border: "1px solid #e4e1d7",
-                padding: "30px",
-              }}
-            >
-              <div
-                style={{
-                  fontSize: "13px",
-                  fontWeight: "900",
-                  color: "#796344",
-                  marginBottom: "9px",
-                }}
-              >
-                {item.step}
-              </div>
-
-              <h3
-                style={{
-                  fontSize: "23px",
-                  margin: "0 0 12px",
-                }}
-              >
-                {item.title}
-              </h3>
-
-              <p
-                style={{
-                  color: "#686e68",
-                  lineHeight: "1.75",
-                  margin: 0,
-                }}
-              >
-                {item.desc}
+        <section>
+          <div className="container aboutGrid">
+            <div>
+              <div className="sectionLabel">WHY EASY HOME CARE</div>
+              <h2 className="sectionTitle">
+                애매한 작업도
+                <br />
+                먼저 문의해주세요.
+              </h2>
+              <p className="sectionDesc">
+                집수리는 현장마다 구조와 작업 조건이 다릅니다.
+                작업할 부분의 사진과 간단한 설명을 보내주시면
+                작업 가능 여부와 견적을 안내해드립니다.
               </p>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* CONTACT */}
-      <section
-        id="contact"
-        style={{
-          maxWidth: "1120px",
-          margin: "0 auto",
-          padding: "85px 24px 90px",
-        }}
-      >
-        <div
-          style={{
-            background: "#234529",
-            color: "#fff",
-            borderRadius: "24px",
-            padding: "50px 28px",
-            textAlign: "center",
-          }}
-        >
-          <div
-            style={{
-              fontSize: "14px",
-              fontWeight: "900",
-              opacity: 0.8,
-              marginBottom: "12px",
-            }}
-          >
-            빠른 견적 상담
+            <div className="aboutBox">
+              <h3>이런 작업도 가능합니다.</h3>
+              <div className="check">✓ 벌목 및 외부 작업</div>
+              <div className="check">✓ 냉장고 및 수납장 철거</div>
+              <div className="check">✓ 방범창살 설치</div>
+              <div className="check">✓ 에어컨 배선 테이핑</div>
+              <div className="check">✓ 대형 거울 설치</div>
+              <div className="check">✓ 빨래건조대 설치</div>
+              <div className="check">✓ 선반 설치 및 보강</div>
+              <div className="check">✓ 기타 생활 집수리</div>
+            </div>
           </div>
+        </section>
 
-          <h2
-            style={{
-              margin: "0 0 15px",
-              fontSize: "36px",
-              letterSpacing: "-1.5px",
-            }}
-          >
-            현장 사진과 함께 문의해주세요
-          </h2>
+        <section className="area" id="area">
+          <div className="container">
+            <div className="sectionLabel">SERVICE AREA</div>
+            <h2 className="sectionTitle">출장 가능 지역</h2>
+            <p className="sectionDesc">
+              현장 위치와 작업 내용에 따라 출장 가능 여부를
+              빠르게 안내해드립니다.
+            </p>
 
-          <p
-            style={{
-              margin: "0 auto",
-              maxWidth: "620px",
-              color: "rgba(255,255,255,0.82)",
-              lineHeight: "1.8",
-            }}
-          >
-            벌목 · 위험목 제거 · 냉장고 철거 · 외부작업 · 기타 집수리
-            <br />
-            작업 위치와 사진을 보내주시면 확인 후 상담해드립니다.
-          </p>
+            <div className="areaTags">
+              <div className="areaTag">서울</div>
+              <div className="areaTag">경기</div>
+              <div className="areaTag">인천</div>
+              <div className="areaTag">충남</div>
+              <div className="areaTag">충북</div>
+              <div className="areaTag">그 외 지역 문의</div>
+            </div>
+          </div>
+        </section>
 
-          <a
-            href="tel:01023849768"
-            style={{
-              display: "inline-block",
-              marginTop: "28px",
-              textDecoration: "none",
-              background: "#fff",
-              color: "#234529",
-              padding: "15px 24px",
-              borderRadius: "11px",
-              fontWeight: "900",
-              fontSize: "17px",
-            }}
-          >
-            📞 010-2384-9768 전화 견적
-          </a>
-        </div>
-      </section>
+        <section id="contact">
+          <div className="container">
+            <div className="contactBox">
+              <div className="sectionLabel">CONTACT</div>
+              <h2>작업 가능 여부부터 문의하세요</h2>
+              <p>
+                작업 내용과 현장 상황을 확인한 후
+                <br />
+                가능한 작업 방법을 안내해드립니다.
+              </p>
 
-      {/* FOOTER */}
-      <footer
-        style={{
-          background: "#1c261f",
-          color: "#c9cec8",
-          padding: "38px 24px 100px",
-        }}
-      >
-        <div
-          style={{
-            maxWidth: "1120px",
-            margin: "0 auto",
-            fontSize: "13px",
-            lineHeight: "1.9",
-          }}
-        >
-          <strong
-            style={{
-              display: "block",
-              color: "#fff",
-              fontSize: "18px",
-              marginBottom: "10px",
-            }}
-          >
-            이지종합건설
-          </strong>
+              <a href={`tel:${callNumber}`} className="bigCall">
+                ☎ 010-2384-9768
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer>
+        <div className="footerInner">
+          <div className="footerLogo">이지홈케어</div>
 
           <div>대표자 : 송은규</div>
           <div>사업자등록번호 : 882-06-03153</div>
           <div>전화 : 010-2384-9768</div>
+          <div>서비스지역 : 서울 · 경기 · 인천 · 충남 · 충북 · 그 외 지역 문의</div>
+
+          <br />
+
           <div>
-            업무 : 벌목 · 위험목 제거 · 냉장고 철거 · 외부작업 · 집수리
+            개인정보처리방침 | 고객의 개인정보는 상담 및 견적 안내
+            목적으로만 이용됩니다.
           </div>
 
-          <div
-            style={{
-              marginTop: "18px",
-              paddingTop: "18px",
-              borderTop: "1px solid rgba(255,255,255,0.12)",
-            }}
-          >
-            <details>
-              <summary
-                style={{
-                  color: "#fff",
-                  fontWeight: "700",
-                  cursor: "pointer",
-                  marginBottom: "12px",
-                }}
-              >
-                개인정보처리방침
-              </summary>
-
-              <div
-                style={{
-                  color: "#aeb5af",
-                  lineHeight: "1.8",
-                  paddingTop: "8px",
-                }}
-              >
-                <p>
-                  이지종합건설은 고객의 개인정보를 중요하게 생각하며
-                  관련 법령에 따라 개인정보를 보호하고 있습니다.
-                </p>
-
-                <p>
-                  <strong style={{ color: "#d9ddd9" }}>
-                    1. 수집하는 개인정보
-                  </strong>
-                  <br />
-                  견적 및 작업 상담 과정에서 이름, 연락처, 작업 주소,
-                  현장 사진 및 상담에 필요한 정보를 제공받을 수 있습니다.
-                </p>
-
-                <p>
-                  <strong style={{ color: "#d9ddd9" }}>
-                    2. 개인정보 이용 목적
-                  </strong>
-                  <br />
-                  견적 상담, 현장 확인, 일정 조율, 문의 응대 및 서비스
-                  제공을 위해 이용됩니다.
-                </p>
-
-                <p>
-                  <strong style={{ color: "#d9ddd9" }}>
-                    3. 개인정보 보유 및 이용기간
-                  </strong>
-                  <br />
-                  이용 목적 달성 후 지체 없이 파기하며 관계 법령에 따라
-                  보존이 필요한 경우 해당 기간 동안 보관할 수 있습니다.
-                </p>
-
-                <p>
-                  <strong style={{ color: "#d9ddd9" }}>
-                    4. 개인정보의 제3자 제공
-                  </strong>
-                  <br />
-                  법령에서 정한 경우를 제외하고 고객의 동의 없이 개인정보를
-                  제3자에게 제공하지 않습니다.
-                </p>
-
-                <p>
-                  <strong style={{ color: "#d9ddd9" }}>
-                    5. 개인정보 관련 문의
-                  </strong>
-                  <br />
-                  개인정보 관련 문의 : 010-2384-9768
-                  <br />
-                  대표자 : 송은규
-                </p>
-              </div>
-            </details>
-          </div>
-
-          <div
-            style={{
-              marginTop: "20px",
-              color: "#8f9790",
-            }}
-          >
-            © 2026 EASY CONSTRUCTION. All rights reserved.
-          </div>
+          <div>© 2026 EASY HOME CARE. All Rights Reserved.</div>
         </div>
       </footer>
 
-      {/* FLOATING CALL BUTTON */}
-      <a
-        href="tel:01023849768"
-        style={{
-          position: "fixed",
-          right: "18px",
-          bottom: "18px",
-          zIndex: 50,
-          width: "58px",
-          height: "58px",
-          borderRadius: "50%",
-          background: "#234529",
-          color: "#fff",
-          textDecoration: "none",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          fontSize: "25px",
-          boxShadow: "0 8px 25px rgba(0,0,0,0.2)",
-        }}
-        aria-label="전화 문의"
-      >
-        ☎
+      <a href={`tel:${callNumber}`} className="floatingCall">
+        ☎ 견적문의
       </a>
-    </main>
+    </>
   );
 }
