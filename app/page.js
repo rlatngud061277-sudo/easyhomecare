@@ -5,45 +5,45 @@ import { useState } from "react";
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const callNumber = "01023849768";
+
   const services = [
     {
       title: "벌목 · 나무 제거",
-      desc: "주택, 상가, 공장 등 좁은 공간 및 위험목 벌목 작업",
+      desc: "좁은 공간, 주택가, 건물 주변 등 현장 상황에 맞춰 벌목 및 나무 제거 작업을 진행합니다.",
       image: "/F43681CE-3D8F-416F-AF29-CE598133364F8.png",
     },
     {
       title: "에어컨 배선 테이핑",
-      desc: "노후된 에어컨 배관 및 배선 테이핑 보수",
+      desc: "노후되거나 벗겨진 에어컨 배관 및 배선 보온재를 깔끔하게 보수합니다.",
       image: "/4CD1D8DB-15F0-408B-B121-14B8DE5EFE19.png",
     },
     {
       title: "방범창살 설치",
-      desc: "주택 및 빌라 방범창살 설치·보수",
+      desc: "주택, 빌라, 상가 등 현장에 맞는 방범창살 설치 및 보수 작업을 진행합니다.",
       image: "/63C20778-04FD-4E09-8C17-4318D20C2C49.png",
     },
     {
       title: "대형 거울 설치",
-      desc: "가정집·상가 대형 거울 안전 설치",
+      desc: "가정집, 상가, 사무실 등 대형 거울 설치 작업을 안전하게 진행합니다.",
       image: "/D0726F84-4F5C-48E8-B6B6-67AB7B722759.png",
     },
     {
-      title: "선반 보강",
-      desc: "처진 선반 및 벽선반 설치·보강 작업",
+      title: "선반 설치 · 보강",
+      desc: "벽선반 설치부터 흔들리거나 처진 기존 선반의 보강 작업까지 가능합니다.",
       image: "/A8739EC2-FB40-407E-8651-727243E1FB11.png",
     },
     {
       title: "파라솔 설치",
-      desc: "테라스·옥상·야외공간 대형 파라솔 설치",
+      desc: "테라스, 옥상, 마당 등 야외 공간에 대형 파라솔 설치 작업을 진행합니다.",
       image: "/98F2595E-43F2-41CC-A8FF-95581E24C025.png",
     },
     {
       title: "빨래건조대 설치",
-      desc: "베란다 천장형 빨래건조대 설치 및 교체",
+      desc: "베란다 천장형 빨래건조대 신규 설치 및 노후 제품 교체가 가능합니다.",
       image: "/1BCC4677-17D0-4FCA-8D3E-EFFBE2E1268A.png",
     },
   ];
-
-  const callNumber = "01023849768";
 
   return (
     <>
@@ -67,8 +67,12 @@ export default function Home() {
         }
 
         a {
-          text-decoration: none;
           color: inherit;
+          text-decoration: none;
+        }
+
+        button {
+          font-family: inherit;
         }
 
         header {
@@ -76,14 +80,14 @@ export default function Home() {
           top: 0;
           z-index: 100;
           background: rgba(255, 255, 255, 0.96);
-          border-bottom: 1px solid #e8e8e8;
+          border-bottom: 1px solid #e6e9e6;
           backdrop-filter: blur(10px);
         }
 
         .nav {
           max-width: 1180px;
-          margin: auto;
           height: 72px;
+          margin: auto;
           padding: 0 24px;
           display: flex;
           align-items: center;
@@ -93,8 +97,8 @@ export default function Home() {
         .logo {
           font-size: 24px;
           font-weight: 900;
-          color: #1d5b39;
           letter-spacing: -1px;
+          color: #1d5b39;
         }
 
         .logo span {
@@ -103,10 +107,10 @@ export default function Home() {
 
         .navLinks {
           display: flex;
-          gap: 28px;
           align-items: center;
+          gap: 27px;
           font-size: 15px;
-          font-weight: 700;
+          font-weight: 800;
         }
 
         .callTop {
@@ -118,49 +122,57 @@ export default function Home() {
 
         .menuButton {
           display: none;
-          border: 0;
           background: transparent;
+          border: 0;
           font-size: 27px;
+          cursor: pointer;
+        }
+
+        .mobileMenu {
+          display: none;
         }
 
         .hero {
-          min-height: 620px;
+          min-height: 650px;
           display: flex;
           align-items: center;
+          color: white;
+
           background:
             linear-gradient(
               90deg,
-              rgba(9, 25, 15, 0.88),
-              rgba(9, 25, 15, 0.55),
-              rgba(9, 25, 15, 0.15)
+              rgba(8, 24, 14, 0.9),
+              rgba(8, 24, 14, 0.58),
+              rgba(8, 24, 14, 0.18)
             ),
             url("/F43681CE-3D8F-416F-AF29-CE598133364F8.png")
-              center/cover no-repeat;
-          color: white;
+              center / cover no-repeat;
         }
 
         .heroInner {
           width: 100%;
           max-width: 1180px;
           margin: auto;
-          padding: 80px 24px;
+          padding: 90px 24px;
         }
 
         .badge {
           display: inline-block;
-          background: rgba(255, 255, 255, 0.16);
-          border: 1px solid rgba(255, 255, 255, 0.35);
-          padding: 9px 14px;
-          border-radius: 30px;
-          font-size: 14px;
           margin-bottom: 20px;
+          padding: 9px 15px;
+          border: 1px solid rgba(255, 255, 255, 0.35);
+          border-radius: 30px;
+          background: rgba(255, 255, 255, 0.14);
+          font-size: 14px;
+          font-weight: 700;
         }
 
         .hero h1 {
-          font-size: clamp(42px, 7vw, 72px);
+          max-width: 760px;
+          margin-bottom: 23px;
+          font-size: clamp(43px, 7vw, 73px);
           line-height: 1.12;
           letter-spacing: -3px;
-          margin-bottom: 22px;
         }
 
         .hero h1 strong {
@@ -168,34 +180,34 @@ export default function Home() {
         }
 
         .hero p {
-          font-size: 19px;
+          max-width: 650px;
+          margin-bottom: 32px;
+          color: #f2f5f2;
+          font-size: 18px;
           line-height: 1.8;
-          color: #f1f1f1;
-          max-width: 610px;
-          margin-bottom: 30px;
         }
 
         .heroButtons {
           display: flex;
-          gap: 12px;
           flex-wrap: wrap;
+          gap: 12px;
         }
 
         .primaryBtn,
         .secondaryBtn {
           padding: 16px 22px;
           border-radius: 12px;
-          font-weight: 800;
           font-size: 16px;
+          font-weight: 900;
         }
 
         .primaryBtn {
-          background: #ffffff;
+          background: white;
           color: #173c27;
         }
 
         .secondaryBtn {
-          border: 1px solid rgba(255, 255, 255, 0.7);
+          border: 1px solid rgba(255, 255, 255, 0.75);
           color: white;
         }
 
@@ -209,22 +221,58 @@ export default function Home() {
         }
 
         .sectionLabel {
-          color: #28744b;
-          font-weight: 900;
-          font-size: 14px;
           margin-bottom: 10px;
+          color: #28744b;
+          font-size: 14px;
+          font-weight: 900;
+          letter-spacing: 0.4px;
         }
 
         .sectionTitle {
-          font-size: 36px;
+          margin-bottom: 13px;
+          font-size: 37px;
           letter-spacing: -1.8px;
-          margin-bottom: 12px;
         }
 
         .sectionDesc {
+          margin-bottom: 40px;
           color: #667068;
           line-height: 1.8;
-          margin-bottom: 40px;
+        }
+
+        .intro {
+          background: #173c27;
+          color: white;
+          padding: 45px 24px;
+        }
+
+        .introGrid {
+          max-width: 1180px;
+          margin: auto;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+
+        .introItem {
+          padding: 20px;
+          text-align: center;
+          border-right: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .introItem:last-child {
+          border-right: 0;
+        }
+
+        .introItem strong {
+          display: block;
+          margin-bottom: 7px;
+          font-size: 21px;
+        }
+
+        .introItem span {
+          color: #cbd8ce;
+          font-size: 14px;
         }
 
         .services {
@@ -238,12 +286,12 @@ export default function Home() {
         }
 
         .card {
+          overflow: hidden;
           background: white;
           border: 1px solid #e5e8e5;
           border-radius: 18px;
-          overflow: hidden;
-          transition: 0.2s;
           box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
+          transition: transform 0.2s, box-shadow 0.2s;
         }
 
         .card:hover {
@@ -252,10 +300,10 @@ export default function Home() {
         }
 
         .cardImage {
+          display: block;
           width: 100%;
           aspect-ratio: 4 / 3;
           object-fit: cover;
-          display: block;
         }
 
         .cardBody {
@@ -263,14 +311,14 @@ export default function Home() {
         }
 
         .cardBody h3 {
-          font-size: 21px;
           margin-bottom: 9px;
+          font-size: 21px;
         }
 
         .cardBody p {
           color: #707870;
-          line-height: 1.65;
           font-size: 14px;
+          line-height: 1.7;
         }
 
         .aboutGrid {
@@ -281,20 +329,20 @@ export default function Home() {
         }
 
         .aboutBox {
+          padding: 42px;
           background: #eaf2ec;
           border-radius: 24px;
-          padding: 42px;
         }
 
         .aboutBox h3 {
-          font-size: 28px;
           margin-bottom: 20px;
+          font-size: 28px;
         }
 
         .check {
           padding: 12px 0;
           border-bottom: 1px solid #d2dfd5;
-          font-weight: 700;
+          font-weight: 750;
         }
 
         .area {
@@ -312,8 +360,8 @@ export default function Home() {
 
         .areaTags {
           display: flex;
-          gap: 10px;
           flex-wrap: wrap;
+          gap: 10px;
         }
 
         .areaTag {
@@ -325,38 +373,38 @@ export default function Home() {
         }
 
         .contactBox {
+          padding: 55px 25px;
           text-align: center;
           background: white;
-          padding: 55px 25px;
-          border-radius: 24px;
           border: 1px solid #e5e8e5;
+          border-radius: 24px;
         }
 
         .contactBox h2 {
-          font-size: 36px;
           margin-bottom: 15px;
+          font-size: 36px;
         }
 
         .contactBox p {
+          margin-bottom: 27px;
           color: #687069;
           line-height: 1.8;
-          margin-bottom: 25px;
         }
 
         .bigCall {
           display: inline-block;
+          padding: 18px 28px;
           background: #1d5b39;
           color: white;
-          padding: 18px 28px;
           border-radius: 13px;
           font-size: 20px;
           font-weight: 900;
         }
 
         footer {
+          padding: 45px 24px 105px;
           background: #121713;
           color: #c9cfca;
-          padding: 42px 24px 100px;
           font-size: 13px;
           line-height: 1.9;
         }
@@ -367,10 +415,17 @@ export default function Home() {
         }
 
         .footerLogo {
-          color: white;
-          font-size: 21px;
-          font-weight: 900;
           margin-bottom: 15px;
+          color: white;
+          font-size: 22px;
+          font-weight: 900;
+        }
+
+        .privacy {
+          margin-top: 20px;
+          padding-top: 18px;
+          border-top: 1px solid #303831;
+          color: #9fa7a0;
         }
 
         .floatingCall {
@@ -378,12 +433,12 @@ export default function Home() {
           right: 18px;
           bottom: 20px;
           z-index: 200;
+          padding: 15px 20px;
           background: #1d5b39;
           color: white;
-          padding: 15px 19px;
           border-radius: 50px;
-          font-weight: 900;
           box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+          font-weight: 900;
         }
 
         @media (max-width: 850px) {
@@ -397,8 +452,8 @@ export default function Home() {
 
           .mobileMenu {
             display: ${menuOpen ? "block" : "none"};
+            padding: 8px 24px 22px;
             background: white;
-            padding: 10px 24px 22px;
             border-top: 1px solid #eee;
           }
 
@@ -406,14 +461,6 @@ export default function Home() {
             display: block;
             padding: 13px 0;
             font-weight: 800;
-          }
-
-          .hero {
-            min-height: 570px;
-          }
-
-          .hero h1 {
-            letter-spacing: -2px;
           }
 
           .serviceGrid {
@@ -432,7 +479,11 @@ export default function Home() {
           }
 
           .logo {
-            font-size: 21px;
+            font-size: 20px;
+          }
+
+          .hero {
+            min-height: 590px;
           }
 
           .heroInner {
@@ -441,6 +492,7 @@ export default function Home() {
 
           .hero h1 {
             font-size: 43px;
+            letter-spacing: -2px;
           }
 
           .hero p {
@@ -463,6 +515,19 @@ export default function Home() {
             aspect-ratio: 16 / 10;
           }
 
+          .introGrid {
+            grid-template-columns: 1fr;
+          }
+
+          .introItem {
+            border-right: 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+          }
+
+          .introItem:last-child {
+            border-bottom: 0;
+          }
+
           .aboutBox {
             padding: 28px 22px;
           }
@@ -476,7 +541,7 @@ export default function Home() {
       <header>
         <div className="nav">
           <a href="#" className="logo">
-            이지<span>홈케어</span>
+            이지<span>종합건설</span>
           </a>
 
           <nav className="navLinks">
@@ -484,7 +549,8 @@ export default function Home() {
             <a href="#cases">시공사례</a>
             <a href="#area">서비스지역</a>
             <a href="#contact">견적문의</a>
-            <a className="callTop" href={`tel:${callNumber}`}>
+
+            <a href={`tel:${callNumber}`} className="callTop">
               전화 문의
             </a>
           </nav>
@@ -492,7 +558,7 @@ export default function Home() {
           <button
             className="menuButton"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="메뉴"
+            aria-label="메뉴 열기"
           >
             ☰
           </button>
@@ -502,53 +568,90 @@ export default function Home() {
           <a href="#services" onClick={() => setMenuOpen(false)}>
             서비스
           </a>
+
           <a href="#cases" onClick={() => setMenuOpen(false)}>
             시공사례
           </a>
+
           <a href="#area" onClick={() => setMenuOpen(false)}>
             서비스 지역
           </a>
-          <a href={`tel:${callNumber}`}>☎ 전화 견적 문의</a>
+
+          <a href="#contact" onClick={() => setMenuOpen(false)}>
+            견적 문의
+          </a>
+
+          <a href={`tel:${callNumber}`}>
+            ☎ 010-2384-9768
+          </a>
         </div>
       </header>
 
       <main>
         <section className="hero">
           <div className="heroInner">
-            <div className="badge">현장 맞춤 시공 · 출장 작업</div>
+            <div className="badge">
+              벌목 · 외부작업 · 생활 집수리
+            </div>
 
             <h1>
-              집 안부터 외부까지
+              현장에 필요한 작업,
               <br />
-              필요한 작업을
+              <strong>이지종합건설</strong>이
               <br />
-              <strong>한 번에.</strong>
+              해결합니다.
             </h1>
 
             <p>
-              벌목부터 방범창, 에어컨 배선 테이핑, 대형 거울,
-              빨래건조대, 선반 보강 등 다양한 생활·외부 시공을
-              도와드립니다.
+              벌목 및 나무 제거부터 방범창살, 에어컨 배선 테이핑,
+              대형 거울, 빨래건조대, 선반 보강 등 다양한 작업을
+              현장 상황에 맞춰 진행합니다.
             </p>
 
             <div className="heroButtons">
               <a href={`tel:${callNumber}`} className="primaryBtn">
                 ☎ 전화 견적 문의
               </a>
+
               <a href="#cases" className="secondaryBtn">
-                시공사례 보기
+                실제 시공사례 보기
               </a>
             </div>
           </div>
         </section>
 
+        <div className="intro">
+          <div className="introGrid">
+            <div className="introItem">
+              <strong>현장 맞춤 상담</strong>
+              <span>사진과 작업 내용을 확인 후 상담</span>
+            </div>
+
+            <div className="introItem">
+              <strong>다양한 출장 시공</strong>
+              <span>외부 작업부터 생활 집수리까지</span>
+            </div>
+
+            <div className="introItem">
+              <strong>광역 출장 가능</strong>
+              <span>서울 · 경기 · 인천 · 충남 · 충북</span>
+            </div>
+          </div>
+        </div>
+
         <section className="services" id="services">
           <div className="container">
-            <div className="sectionLabel">EASY HOME CARE</div>
-            <h2 className="sectionTitle">어떤 작업이 필요하세요?</h2>
+            <div className="sectionLabel">
+              EASY GENERAL CONSTRUCTION
+            </div>
+
+            <h2 className="sectionTitle">
+              이지종합건설 주요 시공
+            </h2>
+
             <p className="sectionDesc">
-              작은 집수리부터 외부 작업까지 현장 상황에 맞춰
-              상담해드립니다.
+              일반적인 집수리부터 작업하기 까다로운 외부 시공까지
+              현장 사진을 보내주시면 작업 가능 여부를 확인해드립니다.
             </p>
 
             <div className="serviceGrid" id="cases">
@@ -560,6 +663,7 @@ export default function Home() {
                     className="cardImage"
                     loading="lazy"
                   />
+
                   <div className="cardBody">
                     <h3>{item.title}</h3>
                     <p>{item.desc}</p>
@@ -573,23 +677,29 @@ export default function Home() {
         <section>
           <div className="container aboutGrid">
             <div>
-              <div className="sectionLabel">WHY EASY HOME CARE</div>
+              <div className="sectionLabel">
+                EASY CONSTRUCTION
+              </div>
+
               <h2 className="sectionTitle">
-                애매한 작업도
+                어디에 문의해야 할지
                 <br />
-                먼저 문의해주세요.
+                애매한 작업도 문의하세요.
               </h2>
+
               <p className="sectionDesc">
-                집수리는 현장마다 구조와 작업 조건이 다릅니다.
-                작업할 부분의 사진과 간단한 설명을 보내주시면
-                작업 가능 여부와 견적을 안내해드립니다.
+                현장마다 구조, 설치 위치, 작업 조건이 다르기 때문에
+                사진과 작업 내용을 확인한 후 작업 가능 여부와
+                필요한 시공 방법을 안내해드립니다.
               </p>
             </div>
 
             <div className="aboutBox">
-              <h3>이런 작업도 가능합니다.</h3>
-              <div className="check">✓ 벌목 및 외부 작업</div>
-              <div className="check">✓ 냉장고 및 수납장 철거</div>
+              <h3>주요 작업 분야</h3>
+
+              <div className="check">✓ 벌목 및 나무 제거</div>
+              <div className="check">✓ 외부 시설물 설치 및 보수</div>
+              <div className="check">✓ 냉장고 · 수납장 철거</div>
               <div className="check">✓ 방범창살 설치</div>
               <div className="check">✓ 에어컨 배선 테이핑</div>
               <div className="check">✓ 대형 거울 설치</div>
@@ -602,11 +712,17 @@ export default function Home() {
 
         <section className="area" id="area">
           <div className="container">
-            <div className="sectionLabel">SERVICE AREA</div>
-            <h2 className="sectionTitle">출장 가능 지역</h2>
+            <div className="sectionLabel">
+              SERVICE AREA
+            </div>
+
+            <h2 className="sectionTitle">
+              이지종합건설 출장 가능 지역
+            </h2>
+
             <p className="sectionDesc">
-              현장 위치와 작업 내용에 따라 출장 가능 여부를
-              빠르게 안내해드립니다.
+              작업 내용과 현장 위치에 따라 출장 가능 여부를
+              확인해드립니다. 그 외 지역도 문의해주세요.
             </p>
 
             <div className="areaTags">
@@ -623,15 +739,24 @@ export default function Home() {
         <section id="contact">
           <div className="container">
             <div className="contactBox">
-              <div className="sectionLabel">CONTACT</div>
-              <h2>작업 가능 여부부터 문의하세요</h2>
+              <div className="sectionLabel">
+                CONTACT
+              </div>
+
+              <h2>
+                시공 및 출장 견적 문의
+              </h2>
+
               <p>
-                작업 내용과 현장 상황을 확인한 후
+                작업이 필요한 부분의 사진과 내용을 준비하시면
                 <br />
-                가능한 작업 방법을 안내해드립니다.
+                더욱 빠른 상담이 가능합니다.
               </p>
 
-              <a href={`tel:${callNumber}`} className="bigCall">
+              <a
+                href={`tel:${callNumber}`}
+                className="bigCall"
+              >
                 ☎ 010-2384-9768
               </a>
             </div>
@@ -641,25 +766,39 @@ export default function Home() {
 
       <footer>
         <div className="footerInner">
-          <div className="footerLogo">이지홈케어</div>
+          <div className="footerLogo">
+            이지종합건설
+          </div>
 
           <div>대표자 : 송은규</div>
           <div>사업자등록번호 : 882-06-03153</div>
           <div>전화 : 010-2384-9768</div>
-          <div>서비스지역 : 서울 · 경기 · 인천 · 충남 · 충북 · 그 외 지역 문의</div>
+
+          <div>
+            서비스지역 : 서울 · 경기 · 인천 · 충남 · 충북 ·
+            그 외 지역 문의
+          </div>
+
+          <div className="privacy">
+            개인정보처리방침
+            <br />
+            상담 과정에서 제공된 개인정보는 견적 및 시공 상담을
+            위한 목적으로만 이용하며, 목적 달성 후 관련 법령에
+            따라 안전하게 처리합니다.
+          </div>
 
           <br />
 
           <div>
-            개인정보처리방침 | 고객의 개인정보는 상담 및 견적 안내
-            목적으로만 이용됩니다.
+            © 2026 이지종합건설. All Rights Reserved.
           </div>
-
-          <div>© 2026 EASY HOME CARE. All Rights Reserved.</div>
         </div>
       </footer>
 
-      <a href={`tel:${callNumber}`} className="floatingCall">
+      <a
+        href={`tel:${callNumber}`}
+        className="floatingCall"
+      >
         ☎ 견적문의
       </a>
     </>
