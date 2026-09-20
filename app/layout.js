@@ -1,8 +1,9 @@
 
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 
 /* =====================================
-   이지종합건설 기본 정보
+   이지종합건설 홈페이지 기본 정보
 ===================================== */
 
 const SITE_URL = "https://easyhomecare.vercel.app";
@@ -12,11 +13,25 @@ const SITE_NAME = "이지종합건설";
 const SITE_TITLE =
   "이지종합건설 | 서울 경기 인천 충남 충북 벌목 전문업체";
 
+/* =====================================
+   네이버 페이지 설명
+   80자 이내로 작성
+===================================== */
+
 const SITE_DESCRIPTION =
-  "이지종합건설은 서울, 경기, 인천, 충남, 충북 지역의 벌목 전문업체입니다. 위험목 제거, 고목 제거, 주택 및 건물 주변 벌목, 임야 벌목 상담을 진행합니다.";
+  "이지종합건설은 서울 경기 인천 충남 충북 지역의 벌목 전문업체입니다. 위험목 제거, 고목 제거, 주택 주변 벌목 및 임야 벌목 상담을 진행합니다.";
+
+/* =====================================
+   Open Graph 설명
+   80자 이내로 작성
+===================================== */
 
 const OG_DESCRIPTION =
-  "서울 경기 인천 충남 충북 벌목 전문업체 이지종합건설. 위험목 제거, 고목 제거, 대형 수목 벌목 및 주택 주변 나무 제거 상담을 진행합니다.";
+  "이지종합건설 벌목 전문업체. 서울 경기 인천 충남 충북 지역의 위험목 제거, 고목 제거, 주택 주변 벌목 및 대형 수목 벌목 상담을 진행합니다.";
+
+/* =====================================
+   대표 이미지
+===================================== */
 
 const MAIN_IMAGE =
   "/F43681CE-3D8F-416F-AF29-CE59813364F8.png";
@@ -29,7 +44,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
 
   title: {
-    absolute: SITE_TITLE,
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
 
   description: SITE_DESCRIPTION,
@@ -46,6 +62,12 @@ export const metadata: Metadata = {
     "인천벌목",
     "충남벌목",
     "충북벌목",
+    "수원벌목",
+    "분당벌목",
+    "성남벌목",
+    "용인벌목",
+    "화성벌목",
+    "평택벌목",
     "천안벌목",
     "아산벌목",
     "청주벌목",
@@ -57,13 +79,10 @@ export const metadata: Metadata = {
     "나무제거",
   ],
 
-  alternates: {
-    canonical: SITE_URL,
-  },
-
   robots: {
     index: true,
     follow: true,
+
     googleBot: {
       index: true,
       follow: true,
@@ -71,27 +90,30 @@ export const metadata: Metadata = {
   },
 
   /* =====================================
-     Open Graph 설정
+     Open Graph 검색 및 공유 설정
   ===================================== */
 
   openGraph: {
-    title: SITE_TITLE,
+    type: "website",
 
-    description: OG_DESCRIPTION,
+    locale: "ko_KR",
 
     url: SITE_URL,
 
     siteName: SITE_NAME,
 
-    locale: "ko_KR",
+    title: SITE_TITLE,
 
-    type: "website",
+    description: OG_DESCRIPTION,
 
     images: [
       {
         url: MAIN_IMAGE,
+
         width: 1200,
+
         height: 630,
+
         alt: "이지종합건설 벌목 전문업체",
       },
     ],
@@ -116,7 +138,7 @@ export const metadata: Metadata = {
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: ReactNode;
 }>) {
   return (
     <html lang="ko">
