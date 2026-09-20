@@ -1,4 +1,3 @@
-
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -18,6 +17,8 @@ const COMPANY = "이지종합건설";
 
 const PHONE = "01023849768";
 const PHONE_DISPLAY = "010-2384-9768";
+
+const SITE_URL = "https://easyhomecare.vercel.app";
 
 const TREE_IMAGE =
   "/F43681CE-3D8F-416F-AF29-CE59813364F8.png";
@@ -59,14 +60,17 @@ export async function generateMetadata({
 
   const name = getRegionName(region);
 
-  const title =
-    `${name} 벌목 · 나무 제거 | ${COMPANY}`;
+  const title = `${name} 벌목업체 | ${COMPANY}`;
 
   const description =
-    `${name} 벌목 및 나무 제거 출장 상담. ` +
-    `주택 주변 위험목 제거, 대형 수목 벌목, ` +
-    `토지 및 임야 벌목 등 현장별 작업 상담. ` +
-    `이지종합건설 ${PHONE_DISPLAY}`;
+    `${name} 벌목업체 ${COMPANY}. ` +
+    `${name} 주택 및 건물 주변 벌목, 위험목 제거, ` +
+    `고목 제거, 대형 수목 벌목, 토지 및 임야 벌목 ` +
+    `출장 상담을 진행합니다. ` +
+    `현장 상황에 맞는 작업 방법과 견적을 안내해드립니다. ` +
+    `전화 ${PHONE_DISPLAY}`;
+
+  const pageUrl = `${SITE_URL}${getRegionUrl(region)}`;
 
   return {
     title: {
@@ -76,14 +80,22 @@ export async function generateMetadata({
     description,
 
     alternates: {
-      canonical: getRegionUrl(region),
+      canonical: pageUrl,
     },
 
     openGraph: {
       title,
       description,
+      url: pageUrl,
+      siteName: COMPANY,
       type: "website",
-      images: [TREE_IMAGE],
+      locale: "ko_KR",
+      images: [
+        {
+          url: `${SITE_URL}${TREE_IMAGE}`,
+          alt: `${name} 벌목업체 ${COMPANY}`,
+        },
+      ],
     },
 
     robots: {
@@ -121,33 +133,26 @@ export default async function RegionPage({
   const services = [
     {
       title: "주택 및 건물 주변 벌목",
-
       desc:
         `${name} 주택, 상가, 공장 등 ` +
-        `건물 주변의 나무 제거 작업을 상담합니다.`,
+        `건물 주변 나무 제거 작업을 상담합니다.`,
     },
-
     {
       title: "위험목 및 고목 제거",
-
       desc:
-        `건물과 시설물에 피해를 줄 우려가 있는 ` +
-        `나무의 상태와 주변 환경을 확인하고 ` +
+        `${name} 지역의 위험목과 고목 상태, ` +
+        `주변 건물 및 시설물 위치를 확인한 후 ` +
         `작업 방법을 안내합니다.`,
     },
-
     {
       title: "대형 수목 벌목",
-
       desc:
-        `크기가 큰 나무와 오래된 고목 등 ` +
-        `현장 접근성과 장비 진입 여부를 고려하여 ` +
-        `벌목 작업을 상담합니다.`,
+        `${name} 대형 수목 벌목 시 ` +
+        `현장 접근성과 장비 진입 가능 여부를 ` +
+        `고려하여 작업을 상담합니다.`,
     },
-
     {
       title: "토지 및 임야 벌목",
-
       desc:
         `${name} 토지 정리, 부지 관리 및 ` +
         `임야 내 수목 제거 등 ` +
@@ -157,10 +162,6 @@ export default async function RegionPage({
 
   return (
     <main className="regionPage">
-      {/* =====================================
-          디자인
-      ===================================== */}
-
       <style>{`
         .regionPage {
           font-family:
@@ -170,7 +171,6 @@ export default async function RegionPage({
             "Noto Sans KR",
             Arial,
             sans-serif;
-
           background: #f7f8f6;
           color: #18211a;
           word-break: keep-all;
@@ -189,7 +189,6 @@ export default async function RegionPage({
           position: sticky;
           top: 0;
           z-index: 100;
-
           background: rgba(255,255,255,0.97);
           border-bottom: 1px solid #e5e8e5;
           backdrop-filter: blur(10px);
@@ -199,7 +198,6 @@ export default async function RegionPage({
           max-width: 1180px;
           margin: auto;
           padding: 18px 24px;
-
           display: flex;
           justify-content: space-between;
           align-items: center;
@@ -217,7 +215,6 @@ export default async function RegionPage({
           display: inline-block;
           background: #1d5b39;
           color: white;
-
           padding: 12px 18px;
           border-radius: 10px;
           font-size: 14px;
@@ -226,10 +223,8 @@ export default async function RegionPage({
 
         .regionHero {
           min-height: 530px;
-
           display: flex;
           align-items: center;
-
           background:
             linear-gradient(
               90deg,
@@ -239,7 +234,6 @@ export default async function RegionPage({
             ),
             url("${TREE_IMAGE}")
             center / cover no-repeat;
-
           color: white;
           padding: 90px 24px;
         }
@@ -252,24 +246,18 @@ export default async function RegionPage({
 
         .regionBadge {
           display: inline-block;
-
           padding: 9px 15px;
           margin-bottom: 22px;
-
           border: 1px solid rgba(255,255,255,0.35);
           border-radius: 30px;
-
           background: rgba(255,255,255,0.13);
-
           font-size: 14px;
           font-weight: 800;
         }
 
         .regionHero h1 {
           max-width: 900px;
-
           margin-bottom: 24px;
-
           font-size: clamp(35px,6vw,62px);
           line-height: 1.25;
           letter-spacing: -2px;
@@ -281,9 +269,7 @@ export default async function RegionPage({
 
         .regionHero p {
           max-width: 700px;
-
           margin-bottom: 30px;
-
           color: #edf3ed;
           font-size: 17px;
           line-height: 1.9;
@@ -291,14 +277,10 @@ export default async function RegionPage({
 
         .regionButton {
           display: inline-block;
-
           padding: 16px 23px;
-
           background: #1d5b39;
           color: white;
-
           border-radius: 12px;
-
           font-size: 16px;
           font-weight: 900;
         }
@@ -314,7 +296,6 @@ export default async function RegionPage({
 
         .regionSectionTitle {
           margin-bottom: 15px;
-
           font-size: clamp(28px,4vw,38px);
           letter-spacing: -1.5px;
           line-height: 1.35;
@@ -322,9 +303,7 @@ export default async function RegionPage({
 
         .regionSectionDesc {
           max-width: 850px;
-
           margin-bottom: 35px;
-
           color: #667068;
           font-size: 16px;
           line-height: 1.9;
@@ -332,7 +311,6 @@ export default async function RegionPage({
 
         .regionLabel {
           margin-bottom: 12px;
-
           color: #28744b;
           font-size: 14px;
           font-weight: 900;
@@ -347,17 +325,14 @@ export default async function RegionPage({
 
         .regionCard {
           overflow: hidden;
-
           background: white;
           border: 1px solid #e5e8e5;
           border-radius: 18px;
-
           box-shadow: 0 5px 20px rgba(0,0,0,0.04);
         }
 
         .regionCardImage {
           display: block;
-
           width: 100%;
           aspect-ratio: 16 / 9;
           object-fit: cover;
@@ -384,9 +359,7 @@ export default async function RegionPage({
 
         .regionCheckBox {
           margin-top: 28px;
-
           padding: 28px;
-
           background: white;
           border: 1px solid #dbe7dd;
           border-radius: 18px;
@@ -394,9 +367,7 @@ export default async function RegionPage({
 
         .regionCheck {
           padding: 13px 0;
-
           border-bottom: 1px solid #e5e8e5;
-
           font-weight: 800;
           line-height: 1.7;
         }
@@ -426,13 +397,10 @@ export default async function RegionPage({
 
         .regionTag {
           display: inline-block;
-
           padding: 13px 18px;
-
           background: rgba(255,255,255,0.1);
           border: 1px solid rgba(255,255,255,0.2);
           border-radius: 30px;
-
           color: white;
           font-size: 14px;
           font-weight: 800;
@@ -444,9 +412,7 @@ export default async function RegionPage({
 
         .regionContact {
           padding: 55px 25px;
-
           text-align: center;
-
           background: white;
           border: 1px solid #e5e8e5;
           border-radius: 24px;
@@ -459,17 +425,14 @@ export default async function RegionPage({
 
         .regionContact p {
           margin-bottom: 28px;
-
           color: #667068;
           line-height: 1.9;
         }
 
         .regionFooter {
           padding: 45px 24px 110px;
-
           background: #121713;
           color: #c9cfca;
-
           font-size: 13px;
           line-height: 2;
         }
@@ -481,7 +444,6 @@ export default async function RegionPage({
 
         .regionFooterLogo {
           margin-bottom: 15px;
-
           color: white;
           font-size: 23px;
           font-weight: 900;
@@ -496,16 +458,11 @@ export default async function RegionPage({
           right: 18px;
           bottom: 20px;
           z-index: 200;
-
           padding: 15px 20px;
-
           background: #1d5b39;
           color: white;
-
           border-radius: 50px;
-
           box-shadow: 0 8px 25px rgba(0,0,0,0.22);
-
           font-weight: 900;
         }
 
@@ -549,17 +506,12 @@ export default async function RegionPage({
         }
       `}</style>
 
-      {/* =====================================
-          상단 메뉴
-      ===================================== */}
+      {/* 상단 메뉴 */}
 
       <header className="regionHeader">
         <div className="regionNav">
-          <Link
-            href="/"
-            className="regionLogo"
-          >
-            이지종합건설
+          <Link href="/" className="regionLogo">
+            {COMPANY}
           </Link>
 
           <a
@@ -571,9 +523,7 @@ export default async function RegionPage({
         </div>
       </header>
 
-      {/* =====================================
-          지역별 메인 화면
-      ===================================== */}
+      {/* 지역별 메인 화면 */}
 
       <section className="regionHero">
         <div className="regionContainer">
@@ -582,7 +532,7 @@ export default async function RegionPage({
           </div>
 
           <h1>
-            {name} 벌목
+            {name} 벌목업체
             <br />
             <strong>
               나무 제거 및 위험목 제거
@@ -606,9 +556,7 @@ export default async function RegionPage({
         </div>
       </section>
 
-      {/* =====================================
-          벌목 서비스
-      ===================================== */}
+      {/* 벌목 서비스 */}
 
       <section className="regionSection">
         <div className="regionContainer">
@@ -621,7 +569,7 @@ export default async function RegionPage({
           </h2>
 
           <p className="regionSectionDesc">
-            이지종합건설은 {name} 지역의
+            {COMPANY}은 {name} 지역의
             벌목 및 나무 제거 작업을 상담합니다.
             나무의 높이와 굵기, 주변 건물과의 거리,
             장비 진입 가능 여부 등에 따라
@@ -643,7 +591,6 @@ export default async function RegionPage({
 
                 <div className="regionCardBody">
                   <h3>{service.title}</h3>
-
                   <p>{service.desc}</p>
                 </div>
               </article>
@@ -652,9 +599,7 @@ export default async function RegionPage({
         </div>
       </section>
 
-      {/* =====================================
-          시공사례
-      ===================================== */}
+      {/* 시공사례 */}
 
       <section
         className="regionSection"
@@ -670,7 +615,7 @@ export default async function RegionPage({
           </h2>
 
           <p className="regionSectionDesc">
-            이지종합건설의 벌목 작업 현장 사진과
+            {COMPANY}의 벌목 작업 현장 사진과
             시공 내용을 확인하실 수 있습니다.
             현장별 작업 환경에 따라
             시공 방법은 달라질 수 있습니다.
@@ -680,7 +625,7 @@ export default async function RegionPage({
             <article className="regionCard">
               <img
                 src={TREE_IMAGE}
-                alt="이지종합건설 벌목 작업 현장"
+                alt={`${COMPANY} 벌목 작업 현장`}
                 className="regionCardImage"
                 loading="lazy"
               />
@@ -699,9 +644,7 @@ export default async function RegionPage({
         </div>
       </section>
 
-      {/* =====================================
-          벌목 상담 안내
-      ===================================== */}
+      {/* 벌목 상담 안내 */}
 
       <section className="regionSection regionAbout">
         <div className="regionContainer">
@@ -751,9 +694,7 @@ export default async function RegionPage({
         </div>
       </section>
 
-      {/* =====================================
-          주변 지역 연결
-      ===================================== */}
+      {/* 주변 지역 연결 */}
 
       <section className="regionSection regionArea">
         <div className="regionContainer">
@@ -766,7 +707,7 @@ export default async function RegionPage({
           </h2>
 
           <p className="regionSectionDesc">
-            이지종합건설은 {name} 및
+            {COMPANY}은 {name} 및
             {region.province} 지역의
             벌목 출장 상담을 진행합니다.
             아래 지역을 선택하면 해당 지역의
@@ -780,7 +721,7 @@ export default async function RegionPage({
                 href={getRegionUrl(item)}
                 className="regionTag"
               >
-                {item.name} 벌목
+                {getRegionName(item)} 벌목
               </Link>
             ))}
           </div>
@@ -796,9 +737,7 @@ export default async function RegionPage({
         </div>
       </section>
 
-      {/* =====================================
-          견적 문의
-      ===================================== */}
+      {/* 견적 문의 */}
 
       <section className="regionSection">
         <div className="regionContainer">
@@ -830,9 +769,7 @@ export default async function RegionPage({
         </div>
       </section>
 
-      {/* =====================================
-          하단 사업자 정보
-      ===================================== */}
+      {/* 하단 사업자 정보 */}
 
       <footer className="regionFooter">
         <div className="regionFooterInner">
@@ -841,26 +778,17 @@ export default async function RegionPage({
           </div>
 
           <div>벌목 전문업체</div>
-
           <div>대표자 : 송은규</div>
-
-          <div>
-            사업자등록번호 : 882-06-03153
-          </div>
-
-          <div>
-            전화 : {PHONE_DISPLAY}
-          </div>
+          <div>사업자등록번호 : 882-06-03153</div>
+          <div>전화 : {PHONE_DISPLAY}</div>
 
           <div>
             서비스지역 : 서울 · 경기 · 인천 ·
-            충남 · 충북 · 그 외 지역 문의
+            충남 · 충북 · 세종 · 그 외 지역 문의
           </div>
 
           <div style={{ marginTop: 20 }}>
-            <Link href="/">
-              메인 홈페이지
-            </Link>
+            <Link href="/">메인 홈페이지</Link>
             {" · "}
             <Link href="/tree-removal">
               전체 벌목 지역
@@ -868,15 +796,12 @@ export default async function RegionPage({
           </div>
 
           <div style={{ marginTop: 20 }}>
-            © 2026 {COMPANY}.
-            All Rights Reserved.
+            © 2026 {COMPANY}. All Rights Reserved.
           </div>
         </div>
       </footer>
 
-      {/* =====================================
-          하단 고정 전화 버튼
-      ===================================== */}
+      {/* 하단 고정 전화 버튼 */}
 
       <a
         href={`tel:${PHONE}`}
