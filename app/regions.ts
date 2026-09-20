@@ -15,38 +15,15 @@ const makeRegions = (
   }));
 
 export const regions: Region[] = [
-  /* =====================================
-     광역 지역 페이지
-  ===================================== */
+  // 광역 지역
+  ...makeRegions("서울", [["서울", "seoul"]]),
+  ...makeRegions("경기", [["경기", "gyeonggi"]]),
+  ...makeRegions("인천", [["인천", "incheon"]]),
+  ...makeRegions("충남", [["충남", "chungnam"]]),
+  ...makeRegions("충북", [["충북", "chungbuk"]]),
+  ...makeRegions("세종", [["세종", "sejong"]]),
 
-  ...makeRegions("서울", [
-    ["서울", "seoul"],
-  ]),
-
-  ...makeRegions("경기", [
-    ["경기", "gyeonggi"],
-  ]),
-
-  ...makeRegions("인천", [
-    ["인천", "incheon"],
-  ]),
-
-  ...makeRegions("충남", [
-    ["충남", "chungnam"],
-  ]),
-
-  ...makeRegions("충북", [
-    ["충북", "chungbuk"],
-  ]),
-
-  ...makeRegions("세종", [
-    ["세종", "sejong"],
-  ]),
-
-  /* =====================================
-     서울
-  ===================================== */
-
+  // 서울
   ...makeRegions("서울", [
     ["종로구", "jongno"],
     ["중구", "seoul-jung"],
@@ -75,10 +52,7 @@ export const regions: Region[] = [
     ["강동구", "gangdong"],
   ]),
 
-  /* =====================================
-     경기
-  ===================================== */
-
+  // 경기
   ...makeRegions("경기", [
     ["수원시", "suwon"],
     ["성남시", "seongnam"],
@@ -113,10 +87,7 @@ export const regions: Region[] = [
     ["양평군", "yangpyeong"],
   ]),
 
-  /* =====================================
-     인천
-  ===================================== */
-
+  // 인천
   ...makeRegions("인천", [
     ["중구", "incheon-jung"],
     ["동구", "incheon-dong"],
@@ -130,10 +101,7 @@ export const regions: Region[] = [
     ["옹진군", "ongjin"],
   ]),
 
-  /* =====================================
-     충남
-  ===================================== */
-
+  // 충남
   ...makeRegions("충남", [
     ["천안시", "cheonan"],
     ["공주시", "gongju"],
@@ -152,10 +120,7 @@ export const regions: Region[] = [
     ["태안군", "taean"],
   ]),
 
-  /* =====================================
-     충북
-  ===================================== */
-
+  // 충북
   ...makeRegions("충북", [
     ["청주시", "cheongju"],
     ["충주시", "chungju"],
@@ -171,52 +136,25 @@ export const regions: Region[] = [
   ]),
 ];
 
-/* =====================================
-   지역 검색
-===================================== */
+export const getRegion = (slug: string): Region | undefined =>
+  regions.find((item) => item.slug === slug);
 
-export const getRegion = (slug: string) =>
-  regions.find((region) => region.slug === slug);
-
-/* =====================================
-   검색 제목용 지역 이름
-
-   서울 → 서울
-   인천 → 인천
-   세종 → 세종
-   수원시 → 수원
-   강남구 → 강남
-   인천 중구 → 인천 중구
-===================================== */
-
-export const getRegionName = (region: Region) => {
+export const getRegionName = (region: Region): string => {
   if (region.name === region.province) {
     return region.name;
   }
 
-  const shortName = region.name.replace(
-    /(특별자치시|특별자치도|시|군|구)$/,
-    ""
-  );
+  const shortName = region.name.replace(/(시|군|구)$/, "");
 
-  const duplicatedNames = [
-    "중구",
-    "동구",
-    "서구",
-    "강서구",
-    "광주시",
-  ];
-
-  if (duplicatedNames.includes(region.name)) {
+  if (
+    ["중구", "동구", "서구", "강서구"].includes(region.name) ||
+    region.slug === "gwangju-gyeonggi"
+  ) {
     return `${region.province} ${shortName}`;
   }
 
   return shortName;
 };
 
-/* =====================================
-   지역별 주소
-===================================== */
-
-export const getRegionUrl = (region: Region) =>
+export const getRegionUrl = (region: Region): string =>
   `/tree-removal/${region.slug}`;
