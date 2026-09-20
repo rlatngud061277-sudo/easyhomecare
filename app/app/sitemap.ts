@@ -1,7 +1,7 @@
 
 import type { MetadataRoute } from "next";
 
-import { regions } from "./regions";
+import { regions } from "../regions";
 
 const SITE_URL =
   "https://easyhomecare.vercel.app";
