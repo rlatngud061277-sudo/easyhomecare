@@ -9,6 +9,10 @@ import {
   getRegionUrl,
 } from "../../regions";
 
+/* =====================================
+   기본 정보
+===================================== */
+
 const SITE_URL = "https://easyhomecare.vercel.app";
 
 const COMPANY = "이지종합건설";
@@ -16,8 +20,29 @@ const COMPANY = "이지종합건설";
 const PHONE = "01023849768";
 const PHONE_DISPLAY = "010-2384-9768";
 
-const TREE_IMAGE =
-  "/F43681CE-3D8F-416F-AF29-CE59813364F8.png";
+/* =====================================
+   메인 홈페이지와 동일한 벌목 사진
+===================================== */
+
+const TREE_IMAGES = {
+  main: "/F43681CE-3D8F-416F-AF29-CE59813364F8.png",
+
+  building:
+    "/821819A6-616A-44E0-8B91-B80E45FE4E73.png",
+
+  dangerous:
+    "/5AD408FF-BE0D-4117-A740-AF7B2010E6A7.png",
+
+  large:
+    "/06B44412-9B35-4FB9-BF55-A47B4C6F5B92.png",
+
+  land:
+    "/9C676CC5-D9E0-45B4-B0DC-F4653EC43126.png",
+};
+
+/* =====================================
+   지역 페이지 설정
+===================================== */
 
 type Props = {
   params: Promise<{
@@ -32,6 +57,10 @@ export function generateStaticParams() {
 }
 
 export const dynamicParams = false;
+
+/* =====================================
+   지역별 검색 제목 및 설명
+===================================== */
 
 export async function generateMetadata({
   params,
@@ -52,17 +81,13 @@ export async function generateMetadata({
 
   const name = getRegionName(region);
 
-  // 검색결과 제목 예시:
-  // 인천벌목업체 | 이지종합건설
-  // 세종벌목업체 | 이지종합건설
-  // 강남구벌목업체 | 이지종합건설
-  const title = `${name}벌목업체 | ${COMPANY}`;
+  const title = `${name} 벌목업체 | ${COMPANY}`;
 
   const description =
     `${name} 벌목 및 나무 제거 상담. ` +
-    `주택·건물 주변 벌목, 위험목 제거, 고목 제거, ` +
-    `대형 수목 벌목, 토지 및 임야 벌목 등 ` +
-    `현장 상황에 맞는 작업을 안내합니다. ` +
+    "주택 및 건물 주변 벌목, 위험목 제거, " +
+    "대형 수목 벌목, 토지 및 임야 벌목 등 " +
+    "현장 상황에 맞는 작업을 상담합니다. " +
     `${COMPANY} ${PHONE_DISPLAY}`;
 
   const pageUrl = `${SITE_URL}${getRegionUrl(region)}`;
@@ -86,8 +111,8 @@ export async function generateMetadata({
       type: "website",
       images: [
         {
-          url: TREE_IMAGE,
-          alt: `${name} 벌목 상담`,
+          url: TREE_IMAGES.main,
+          alt: `${name} 벌목업체 ${COMPANY}`,
         },
       ],
     },
@@ -98,6 +123,10 @@ export async function generateMetadata({
     },
   };
 }
+
+/* =====================================
+   지역별 벌목 페이지
+===================================== */
 
 export default async function RegionPage({
   params,
@@ -112,54 +141,77 @@ export default async function RegionPage({
 
   const name = getRegionName(region);
 
-  const nearbyRegions = regions
-    .filter(
-      (item) =>
-        item.province === region.province &&
-        item.slug !== region.slug
-    )
-    .slice(0, 12);
+  /* =====================================
+     메인 홈페이지와 동일한 서비스 사진
+  ===================================== */
+
+  const services = [
+    {
+      title: "주택 및 건물 주변 벌목",
+      desc:
+        `${name} 주택, 상가, 공장 등 건물 주변의 ` +
+        "나무 제거 작업을 현장 상황에 맞춰 상담합니다.",
+      image: TREE_IMAGES.building,
+    },
+    {
+      title: "위험목 제거",
+      desc:
+        "건물이나 시설물에 피해를 줄 우려가 있는 " +
+        "나무의 상태와 주변 환경을 확인한 후 " +
+        "작업 방법을 안내합니다.",
+      image: TREE_IMAGES.dangerous,
+    },
+    {
+      title: "대형 수목 벌목",
+      desc:
+        "크기가 큰 나무와 오래된 고목 등 " +
+        "현장 접근성과 주변 시설물을 고려한 " +
+        "벌목 작업을 상담합니다.",
+      image: TREE_IMAGES.large,
+    },
+    {
+      title: "토지 및 임야 벌목",
+      desc:
+        "토지 정리, 부지 관리 및 임야 내 수목 제거 등 " +
+        "현장 규모와 작업 범위에 맞춰 상담해드립니다.",
+      image: TREE_IMAGES.land,
+    },
+  ];
+
+  /* =====================================
+     지역 이동 링크
+  ===================================== */
+
+  const nearbyRegions = regions.filter(
+    (item) =>
+      item.province === region.province &&
+      item.slug !== region.slug
+  );
 
   const mainRegions = regions.filter(
     (item) => item.name === item.province
   );
 
-  const services = [
-    {
-      title: "주택 및 건물 주변 벌목",
-      description:
-        `${name} 주택, 상가, 공장 등 건물 주변의 ` +
-        `나무 제거 작업을 상담합니다.`,
-    },
-    {
-      title: "위험목 및 고목 제거",
-      description:
-        "주변 건물과 시설물, 전선 등의 위치를 확인하고 " +
-        "현장에 맞는 작업 방법을 안내합니다.",
-    },
-    {
-      title: "대형 수목 벌목",
-      description:
-        "나무의 높이와 굵기, 작업 공간 및 장비 진입 가능 여부를 " +
-        "확인한 뒤 벌목 작업을 상담합니다.",
-    },
-    {
-      title: "토지 및 임야 벌목",
-      description:
-        `${name} 토지 정리, 부지 관리 및 임야 내 ` +
-        `수목 제거 등 작업 범위에 맞춰 상담합니다.`,
-    },
-  ];
-
   return (
     <main className="regionPage">
       <style>{`
+        /* =====================================
+           기본 디자인
+        ===================================== */
+
         .regionPage {
           min-height: 100vh;
           background: #f7f8f6;
           color: #18211a;
-          font-family: -apple-system, BlinkMacSystemFont,
-            "Pretendard", "Noto Sans KR", Arial, sans-serif;
+
+          font-family:
+            -apple-system,
+            BlinkMacSystemFont,
+            "Pretendard",
+            "Noto Sans KR",
+            Arial,
+            sans-serif;
+
           word-break: keep-all;
         }
 
@@ -171,59 +223,74 @@ export default async function RegionPage({
           text-decoration: none;
         }
 
+        /* =====================================
+           상단 메뉴
+        ===================================== */
+
         .regionHeader {
           position: sticky;
           top: 0;
           z-index: 100;
-          background: rgba(255, 255, 255, 0.97);
-          border-bottom: 1px solid #e5e8e5;
+
+          background: rgba(255, 255, 255, 0.96);
+          border-bottom: 1px solid #e6e9e6;
         }
 
         .regionNav {
           max-width: 1180px;
+          min-height: 72px;
           margin: auto;
-          padding: 18px 24px;
+          padding: 12px 24px;
+
           display: flex;
-          justify-content: space-between;
           align-items: center;
-          gap: 15px;
+          justify-content: space-between;
+          gap: 14px;
         }
 
         .regionLogo {
           color: #1d5b39;
-          font-size: 23px;
+          font-size: 24px;
           font-weight: 900;
-        }
-
-        .regionCall,
-        .regionButton,
-        .regionFloating {
-          display: inline-block;
-          background: #1d5b39;
-          color: white;
-          border-radius: 12px;
-          font-weight: 900;
+          letter-spacing: -1px;
         }
 
         .regionCall {
+          display: inline-block;
+
           padding: 12px 18px;
+          background: #1d5b39;
+          color: white;
+
+          border-radius: 10px;
+
           font-size: 14px;
+          font-weight: 900;
+          white-space: nowrap;
         }
 
+        /* =====================================
+           메인 배너
+           메인 홈페이지와 동일한 사진
+        ===================================== */
+
         .regionHero {
-          min-height: 520px;
+          min-height: 580px;
+
           display: flex;
           align-items: center;
-          padding: 85px 24px;
+
           color: white;
+
           background:
             linear-gradient(
               90deg,
-              rgba(8,24,14,0.94),
-              rgba(8,24,14,0.65),
-              rgba(8,24,14,0.3)
+              rgba(8, 24, 14, 0.92),
+              rgba(8, 24, 14, 0.65),
+              rgba(8, 24, 14, 0.2)
             ),
-            url("${TREE_IMAGE}") center / cover no-repeat;
+            url("${TREE_IMAGES.main}")
+            center / cover no-repeat;
         }
 
         .regionContainer {
@@ -232,21 +299,31 @@ export default async function RegionPage({
           margin: auto;
         }
 
+        .regionHeroInner {
+          padding: 85px 24px;
+        }
+
         .regionBadge {
           display: inline-block;
+
+          margin-bottom: 20px;
           padding: 9px 15px;
-          margin-bottom: 22px;
-          border: 1px solid rgba(255,255,255,0.35);
+
+          border: 1px solid rgba(255, 255, 255, 0.35);
           border-radius: 30px;
-          background: rgba(255,255,255,0.13);
+
+          background: rgba(255, 255, 255, 0.14);
+
           font-size: 14px;
           font-weight: 800;
         }
 
         .regionHero h1 {
-          margin: 0 0 24px;
-          font-size: clamp(35px, 6vw, 62px);
-          line-height: 1.3;
+          max-width: 850px;
+          margin: 0 0 23px;
+
+          font-size: clamp(38px, 6vw, 64px);
+          line-height: 1.2;
           letter-spacing: -2px;
         }
 
@@ -255,16 +332,26 @@ export default async function RegionPage({
         }
 
         .regionHero p {
-          max-width: 720px;
-          margin: 0 0 30px;
-          color: #edf3ed;
+          max-width: 700px;
+          margin: 0 0 32px;
+
+          color: #f2f5f2;
           font-size: 17px;
-          line-height: 1.9;
+          line-height: 1.8;
         }
 
         .regionButton {
-          padding: 16px 23px;
+          display: inline-block;
+
+          padding: 16px 22px;
+
+          background: #1d5b39;
+          color: white;
+
+          border-radius: 12px;
+
           font-size: 16px;
+          font-weight: 900;
         }
 
         .regionHero .regionButton {
@@ -272,33 +359,49 @@ export default async function RegionPage({
           color: #173c27;
         }
 
+        /* =====================================
+           공통 섹션
+        ===================================== */
+
         .regionSection {
-          padding: 80px 24px;
+          padding: 85px 24px;
         }
 
         .regionLabel {
-          margin-bottom: 12px;
+          margin-bottom: 10px;
+
           color: #28744b;
           font-size: 14px;
           font-weight: 900;
+          letter-spacing: 0.4px;
         }
 
         .regionSectionTitle {
-          margin: 0 0 16px;
-          font-size: clamp(28px, 4vw, 38px);
+          margin: 0 0 15px;
+
+          font-size: clamp(29px, 4vw, 37px);
           line-height: 1.35;
-          letter-spacing: -1px;
+          letter-spacing: -1.5px;
         }
 
         .regionSectionDesc {
           max-width: 850px;
           margin: 0 0 35px;
+
           color: #667068;
           font-size: 16px;
           line-height: 1.9;
         }
 
-        .regionGrid {
+        /* =====================================
+           벌목 서비스 사진 카드
+        ===================================== */
+
+        .regionServices {
+          background: white;
+        }
+
+        .regionServiceGrid {
           display: grid;
           grid-template-columns: repeat(2, minmax(0, 1fr));
           gap: 22px;
@@ -306,48 +409,71 @@ export default async function RegionPage({
 
         .regionCard {
           overflow: hidden;
+
           background: white;
           border: 1px solid #e5e8e5;
           border-radius: 18px;
+
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
         }
 
         .regionCardImage {
           display: block;
+
           width: 100%;
-          aspect-ratio: 16 / 9;
+          aspect-ratio: 16 / 10;
           object-fit: cover;
         }
 
         .regionCardBody {
-          padding: 24px;
+          padding: 22px;
         }
 
         .regionCardBody h3 {
-          margin: 0 0 12px;
+          margin: 0 0 10px;
           font-size: 21px;
+          line-height: 1.5;
         }
 
         .regionCardBody p {
           margin: 0;
-          color: #667068;
+
+          color: #707870;
           font-size: 15px;
           line-height: 1.8;
         }
 
+        /* =====================================
+           상담 안내
+        ===================================== */
+
         .regionAbout {
-          background: #eaf2ec;
+          background: #f7f8f6;
         }
 
-        .regionCheckBox {
-          padding: 28px;
-          background: white;
-          border: 1px solid #dbe7dd;
-          border-radius: 18px;
+        .regionAboutGrid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 45px;
+          align-items: center;
+        }
+
+        .regionAboutBox {
+          padding: 38px;
+
+          background: #eaf2ec;
+          border-radius: 24px;
+        }
+
+        .regionAboutBox h3 {
+          margin: 0 0 18px;
+          font-size: 27px;
         }
 
         .regionCheck {
           padding: 13px 0;
-          border-bottom: 1px solid #e5e8e5;
+
+          border-bottom: 1px solid #d2dfd5;
           font-weight: 800;
           line-height: 1.7;
         }
@@ -355,6 +481,10 @@ export default async function RegionPage({
         .regionCheck:last-child {
           border-bottom: 0;
         }
+
+        /* =====================================
+           지역별 페이지 이동
+        ===================================== */
 
         .regionArea {
           background: #173c27;
@@ -377,40 +507,75 @@ export default async function RegionPage({
 
         .regionTag {
           display: inline-block;
+
           padding: 13px 18px;
-          background: rgba(255,255,255,0.1);
-          border: 1px solid rgba(255,255,255,0.2);
+
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 30px;
+
           color: white;
           font-size: 14px;
           font-weight: 800;
         }
 
+        .regionAreaHeading {
+          margin: 30px 0 15px;
+          font-size: 18px;
+        }
+
+        .regionAllAreas {
+          display: inline-block;
+          margin-top: 28px;
+          padding: 16px 22px;
+
+          background: white;
+          color: #173c27;
+
+          border-radius: 12px;
+          font-size: 15px;
+          font-weight: 900;
+        }
+
+        /* =====================================
+           견적 문의
+        ===================================== */
+
         .regionContact {
           padding: 55px 25px;
+
           text-align: center;
+
           background: white;
           border: 1px solid #e5e8e5;
           border-radius: 24px;
         }
 
         .regionContact h2 {
-          margin: 0 0 17px;
+          margin: 0 0 15px;
           font-size: 36px;
         }
 
         .regionContact p {
-          margin: 0 0 28px;
-          color: #667068;
-          line-height: 1.9;
+          margin: 0 0 27px;
+
+          color: #687069;
+          font-size: 16px;
+          line-height: 1.8;
         }
 
+        /* =====================================
+           하단 사업자 정보
+        ===================================== */
+
         .regionFooter {
-          padding: 45px 24px 110px;
+          padding: 45px 24px 105px;
+
           background: #121713;
           color: #c9cfca;
+
           font-size: 13px;
-          line-height: 2;
+          line-height: 1.9;
         }
 
         .regionFooterInner {
@@ -419,8 +584,10 @@ export default async function RegionPage({
         }
 
         .regionFooterLogo {
+          margin-bottom: 15px;
+
           color: white;
-          font-size: 23px;
+          font-size: 22px;
           font-weight: 900;
         }
 
@@ -428,54 +595,85 @@ export default async function RegionPage({
           color: white;
         }
 
-        .regionFloating {
+        /* =====================================
+           하단 고정 전화 버튼
+        ===================================== */
+
+        .regionFloatingCall {
           position: fixed;
           right: 18px;
           bottom: 20px;
           z-index: 200;
+
           padding: 15px 20px;
+
+          background: #1d5b39;
+          color: white;
+
           border-radius: 50px;
-          box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
+
+          font-weight: 900;
         }
 
-        @media (max-width: 600px) {
+        /* =====================================
+           모바일 디자인
+        ===================================== */
+
+        @media (max-width: 850px) {
+          .regionAboutGrid {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        @media (max-width: 560px) {
           .regionNav {
-            padding: 15px 18px;
+            min-height: 64px;
+            padding: 12px 18px;
           }
 
           .regionLogo {
-            font-size: 19px;
+            font-size: 20px;
           }
 
           .regionHero {
-            padding: 70px 20px;
+            min-height: 560px;
+          }
+
+          .regionHeroInner {
+            padding: 65px 20px;
           }
 
           .regionHero h1 {
-            font-size: 38px;
+            font-size: 40px;
           }
 
           .regionHero p {
-            font-size: 15px;
+            font-size: 16px;
           }
 
           .regionSection {
             padding: 65px 18px;
           }
 
-          .regionGrid {
+          .regionServiceGrid {
             grid-template-columns: 1fr;
           }
 
-          .regionContact {
-            padding: 40px 20px;
+          .regionAboutBox {
+            padding: 28px 22px;
           }
 
           .regionContact h2 {
-            font-size: 29px;
+            font-size: 28px;
           }
         }
       `}</style>
+
+      {/* =====================================
+          상단 메뉴
+      ===================================== */}
 
       <header className="regionHeader">
         <div className="regionNav">
@@ -483,60 +681,80 @@ export default async function RegionPage({
             {COMPANY}
           </Link>
 
-          <a href={`tel:${PHONE}`} className="regionCall">
+          <a
+            href={`tel:${PHONE}`}
+            className="regionCall"
+          >
             ☎ 전화 문의
           </a>
         </div>
       </header>
 
+      {/* =====================================
+          지역별 메인 배너
+      ===================================== */}
+
       <section className="regionHero">
-        <div className="regionContainer">
+        <div className="regionContainer regionHeroInner">
           <div className="regionBadge">
-            🌳 {name} 벌목 출장 상담
+            🌳 {name} 벌목 · 나무 제거 상담
           </div>
 
           <h1>
-            {name}벌목업체
+            {name} 벌목업체
             <br />
-            <strong>나무 제거 · 위험목 제거</strong>
+            <strong>{COMPANY}</strong>
           </h1>
 
           <p>
-            {name} 주택 및 건물 주변 벌목부터
-            대형 수목 제거, 토지 및 임야 벌목까지.
+            {name} 지역의 주택 및 건물 주변 벌목부터
+            위험목 제거, 대형 수목 벌목,
+            토지 및 임야 벌목까지.
             <br />
-            현장 환경과 작업 조건을 확인하고
+            현장 환경과 작업 조건을 확인한 후
             벌목 방법과 견적을 안내해드립니다.
           </p>
 
-          <a href={`tel:${PHONE}`} className="regionButton">
+          <a
+            href={`tel:${PHONE}`}
+            className="regionButton"
+          >
             ☎ 벌목 견적 문의
           </a>
         </div>
       </section>
 
-      <section className="regionSection">
+      {/* =====================================
+          벌목 서비스
+          메인 홈페이지 사진 그대로 사용
+      ===================================== */}
+
+      <section className="regionSection regionServices">
         <div className="regionContainer">
           <div className="regionLabel">
             TREE REMOVAL SERVICE
           </div>
 
           <h2 className="regionSectionTitle">
-            {name} 벌목 서비스
+            {name} 벌목 전문 시공
           </h2>
 
           <p className="regionSectionDesc">
-            {COMPANY}은 {name} 지역의 벌목 및
-            나무 제거 작업을 상담합니다.
-            나무의 크기와 주변 환경, 장비 진입 가능 여부에
-            따라 작업 방법과 견적이 달라질 수 있습니다.
+            {COMPANY}은 {name} 지역의 주택,
+            상가, 공장, 토지 및 임야 등
+            다양한 현장의 벌목 작업을 상담합니다.
+            나무의 크기와 주변 환경에 따라
+            작업 방법과 견적이 달라질 수 있습니다.
           </p>
 
-          <div className="regionGrid">
+          <div className="regionServiceGrid">
             {services.map((service) => (
-              <article className="regionCard" key={service.title}>
+              <article
+                key={service.title}
+                className="regionCard"
+              >
                 <img
-                  src={TREE_IMAGE}
+                  src={service.image}
                   alt={`${name} ${service.title}`}
                   className="regionCardImage"
                   loading="lazy"
@@ -544,7 +762,7 @@ export default async function RegionPage({
 
                 <div className="regionCardBody">
                   <h3>{service.title}</h3>
-                  <p>{service.description}</p>
+                  <p>{service.desc}</p>
                 </div>
               </article>
             ))}
@@ -552,82 +770,69 @@ export default async function RegionPage({
         </div>
       </section>
 
-      <section
-        className="regionSection"
-        style={{ background: "#ffffff" }}
-      >
-        <div className="regionContainer">
-          <div className="regionLabel">
-            TREE REMOVAL PORTFOLIO
-          </div>
-
-          <h2 className="regionSectionTitle">
-            벌목 작업 안내
-          </h2>
-
-          <p className="regionSectionDesc">
-            벌목이 필요한 나무의 사진과 현장 위치를
-            준비해 주시면 작업 범위와 현장 조건을
-            확인한 후 상담해드립니다.
-          </p>
-
-          <div className="regionGrid">
-            <article className="regionCard">
-              <img
-                src={TREE_IMAGE}
-                alt="벌목 작업 안내 이미지"
-                className="regionCardImage"
-                loading="lazy"
-              />
-
-              <div className="regionCardBody">
-                <h3>현장별 벌목 상담</h3>
-                <p>
-                  주택 주변 나무 제거부터 대형 수목 및
-                  위험목 제거까지 현장 상황에 맞춰
-                  상담을 진행합니다.
-                </p>
-              </div>
-            </article>
-          </div>
-        </div>
-      </section>
+      {/* =====================================
+          벌목 상담 안내
+      ===================================== */}
 
       <section className="regionSection regionAbout">
-        <div className="regionContainer">
-          <div className="regionLabel">
-            TREE REMOVAL GUIDE
+        <div className="regionContainer regionAboutGrid">
+          <div>
+            <div className="regionLabel">
+              ABOUT TREE REMOVAL
+            </div>
+
+            <h2 className="regionSectionTitle">
+              {name} 벌목 작업,
+              <br />
+              현장 확인부터 상담하세요.
+            </h2>
+
+            <p className="regionSectionDesc">
+              벌목은 나무의 높이와 굵기,
+              주변 건물 및 전선과의 거리,
+              장비 진입 가능 여부 등에 따라
+              작업 방법이 달라집니다.
+              <br />
+              <br />
+              현장 사진과 작업 내용을 준비해 주시면
+              작업 가능 여부와 필요한 장비,
+              예상 견적을 안내해드립니다.
+            </p>
           </div>
 
-          <h2 className="regionSectionTitle">
-            {name} 벌목 작업 상담 안내
-          </h2>
+          <div className="regionAboutBox">
+            <h3>벌목 상담 안내</h3>
 
-          <p className="regionSectionDesc">
-            벌목할 나무의 크기와 위치, 주변 건물 및
-            전선과의 거리, 장비 진입 가능 여부 등을
-            확인한 후 작업 방법을 안내합니다.
-          </p>
+            <div className="regionCheck">
+              ✓ 주택 및 건물 주변 나무 제거
+            </div>
 
-          <div className="regionCheckBox">
             <div className="regionCheck">
-              ✓ 벌목할 나무의 높이와 굵기 확인
+              ✓ 위험목 및 고목 제거
             </div>
+
             <div className="regionCheck">
-              ✓ 주변 건물 및 시설물 위치 확인
+              ✓ 대형 수목 벌목
             </div>
+
             <div className="regionCheck">
-              ✓ 장비 진입 가능 여부 확인
+              ✓ 토지 및 임야 벌목
             </div>
+
             <div className="regionCheck">
-              ✓ 작업 범위 및 현장 위치 확인
+              ✓ 현장 접근성 및 장비 진입 확인
             </div>
+
             <div className="regionCheck">
-              ✓ 작업 방법 및 견적 상담
+              ✓ 벌목 작업 견적 상담
             </div>
           </div>
         </div>
       </section>
+
+      {/* =====================================
+          지역별 벌목 페이지 이동
+      ===================================== */}
 
       <section className="regionSection regionArea">
         <div className="regionContainer">
@@ -656,29 +861,34 @@ export default async function RegionPage({
             ))}
           </div>
 
-          <div style={{ marginTop: 30 }}>
-            <p>다른 지역 보기</p>
+          <h3 className="regionAreaHeading">
+            다른 지역 보기
+          </h3>
 
-            <div className="regionTags">
-              {mainRegions.map((item) => (
-                <Link
-                  key={item.slug}
-                  href={getRegionUrl(item)}
-                  className="regionTag"
-                >
-                  {item.name} 벌목
-                </Link>
-              ))}
-            </div>
+          <div className="regionTags">
+            {mainRegions.map((item) => (
+              <Link
+                key={item.slug}
+                href={getRegionUrl(item)}
+                className="regionTag"
+              >
+                {item.name} 벌목
+              </Link>
+            ))}
           </div>
 
-          <div style={{ marginTop: 30 }}>
-            <Link href="/tree-removal" className="regionTag">
-              전체 벌목 출장 지역 보기 →
-            </Link>
-          </div>
+          <Link
+            href="/tree-removal"
+            className="regionAllAreas"
+          >
+            🌳 전체 벌목 출장 지역 보기 →
+          </Link>
         </div>
       </section>
+
+      {/* =====================================
+          견적 문의
+      ===================================== */}
 
       <section className="regionSection">
         <div className="regionContainer">
@@ -690,19 +900,27 @@ export default async function RegionPage({
             <h2>{name} 벌목 견적 문의</h2>
 
             <p>
-              벌목이 필요한 나무의 사진과 현장 위치를
-              준비해 주세요.
+              벌목이 필요한 나무의 사진과
+              현장 위치를 준비해 주세요.
               <br />
-              나무의 크기와 작업 환경 등을 확인한 후
+              나무의 크기, 작업 환경 및
+              장비 진입 가능 여부를 확인한 후
               상담해드립니다.
             </p>
 
-            <a href={`tel:${PHONE}`} className="regionButton">
+            <a
+              href={`tel:${PHONE}`}
+              className="regionButton"
+            >
               ☎ {PHONE_DISPLAY}
             </a>
           </div>
         </div>
       </section>
+
+      {/* =====================================
+          하단 사업자 정보
+      ===================================== */}
 
       <footer className="regionFooter">
         <div className="regionFooterInner">
@@ -711,9 +929,16 @@ export default async function RegionPage({
           </div>
 
           <div>벌목 전문업체</div>
+
           <div>대표자 : 송은규</div>
-          <div>사업자등록번호 : 882-06-03153</div>
-          <div>전화 : {PHONE_DISPLAY}</div>
+
+          <div>
+            사업자등록번호 : 882-06-03153
+          </div>
+
+          <div>
+            전화 : {PHONE_DISPLAY}
+          </div>
 
           <div>
             서비스지역 : 서울 · 경기 · 인천 ·
@@ -721,9 +946,15 @@ export default async function RegionPage({
           </div>
 
           <div style={{ marginTop: 20 }}>
-            <Link href="/">메인 홈페이지</Link>
+            <Link href="/">
+              메인 홈페이지
+            </Link>
+
             {" · "}
-            <Link href="/tree-removal">전체 벌목 지역</Link>
+
+            <Link href="/tree-removal">
+              전체 벌목 지역
+            </Link>
           </div>
 
           <div style={{ marginTop: 20 }}>
@@ -732,7 +963,14 @@ export default async function RegionPage({
         </div>
       </footer>
 
-      <a href={`tel:${PHONE}`} className="regionFloating">
+      {/* =====================================
+          하단 고정 전화 버튼
+      ===================================== */}
+
+      <a
+        href={`tel:${PHONE}`}
+        className="regionFloatingCall"
+      >
         ☎ 벌목 견적문의
       </a>
     </main>
