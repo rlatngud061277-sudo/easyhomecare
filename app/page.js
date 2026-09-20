@@ -12,8 +12,26 @@ const COMPANY = "이지종합건설";
 const PHONE = "01023849768";
 const PHONE_DISPLAY = "010-2384-9768";
 
-const TREE_IMAGE =
-  "/F43681CE-3D8F-416F-AF29-CE59813364F8.png";
+/* =====================================
+   벌목 사진
+   public 폴더에 업로드한 파일명
+===================================== */
+
+const TREE_IMAGES = {
+  main: "/F43681CE-3D8F-416F-AF29-CE59813364F8.png",
+
+  building:
+    "/821819A6-616A-44F0-8B91-B80E45FE4E73.png",
+
+  dangerous:
+    "/5AD408FF-BE0D-4111-A740-AF7B2010E6A7.png",
+
+  large:
+    "/06B44412-9B35-4FB9-BF55-A47B4C6F5B92.png",
+
+  land:
+    "/9C676CC5-D9E0-45B4-B0DC-F4653EC43126.png",
+};
 
 /* =====================================
    벌목 서비스
@@ -25,7 +43,7 @@ const services = [
     desc:
       "주택, 상가, 공장 등 건물 주변의 나무를 " +
       "현장 상황에 맞춰 제거합니다.",
-    image: TREE_IMAGE,
+    image: TREE_IMAGES.building,
   },
   {
     title: "위험목 제거",
@@ -33,7 +51,7 @@ const services = [
       "건물이나 시설물에 피해를 줄 우려가 있는 " +
       "나무의 상태와 주변 환경을 확인한 후 " +
       "작업 방법을 안내합니다.",
-    image: TREE_IMAGE,
+    image: TREE_IMAGES.dangerous,
   },
   {
     title: "대형 수목 벌목",
@@ -41,14 +59,45 @@ const services = [
       "크기가 큰 나무와 오래된 고목 등 " +
       "현장 접근성과 주변 시설물을 고려한 " +
       "벌목 작업을 진행합니다.",
-    image: TREE_IMAGE,
+    image: TREE_IMAGES.large,
   },
   {
     title: "토지 및 임야 벌목",
     desc:
       "토지 정리, 부지 관리 및 임야 내 수목 제거 등 " +
       "현장 규모에 맞춰 상담해드립니다.",
-    image: TREE_IMAGE,
+    image: TREE_IMAGES.land,
+  },
+];
+
+/* =====================================
+   벌목 시공사례
+===================================== */
+
+const cases = [
+  {
+    title: "건물 주변 수목 벌목",
+    desc:
+      "건물 주변 수목의 벌목 전·후 현장 사진입니다.",
+    image: TREE_IMAGES.building,
+  },
+  {
+    title: "주택 주변 나무 제거",
+    desc:
+      "주택 주변 나무 제거 작업의 전·후 사진입니다.",
+    image: TREE_IMAGES.dangerous,
+  },
+  {
+    title: "대형 수목 벌목 현장",
+    desc:
+      "수목 벌목 작업 전·후 모습을 확인하실 수 있습니다.",
+    image: TREE_IMAGES.large,
+  },
+  {
+    title: "토지 및 부지 벌목",
+    desc:
+      "부지 내 수목 벌목 전·후 현장 사진입니다.",
+    image: TREE_IMAGES.land,
   },
 ];
 
@@ -134,7 +183,7 @@ export default function Home() {
           top: 0;
           z-index: 100;
 
-          background: rgba(255,255,255,0.96);
+          background: rgba(255, 255, 255, 0.96);
           border-bottom: 1px solid #e6e9e6;
           backdrop-filter: blur(10px);
         }
@@ -211,9 +260,9 @@ export default function Home() {
           background:
             linear-gradient(
               90deg,
-              rgba(8,24,14,0.92),
-              rgba(8,24,14,0.65),
-              rgba(8,24,14,0.2)
+              rgba(8, 24, 14, 0.92),
+              rgba(8, 24, 14, 0.65),
+              rgba(8, 24, 14, 0.2)
             ),
             url("/F43681CE-3D8F-416F-AF29-CE59813364F8.png")
             center / cover no-repeat;
@@ -232,10 +281,10 @@ export default function Home() {
           margin-bottom: 20px;
           padding: 9px 15px;
 
-          border: 1px solid rgba(255,255,255,0.35);
+          border: 1px solid rgba(255, 255, 255, 0.35);
           border-radius: 30px;
 
-          background: rgba(255,255,255,0.14);
+          background: rgba(255, 255, 255, 0.14);
 
           font-size: 14px;
           font-weight: 700;
@@ -245,7 +294,7 @@ export default function Home() {
           max-width: 850px;
           margin-bottom: 23px;
 
-          font-size: clamp(40px,7vw,73px);
+          font-size: clamp(40px, 7vw, 73px);
           line-height: 1.15;
           letter-spacing: -3px;
         }
@@ -286,7 +335,7 @@ export default function Home() {
         }
 
         .secondaryBtn {
-          border: 1px solid rgba(255,255,255,0.75);
+          border: 1px solid rgba(255, 255, 255, 0.75);
           color: white;
         }
 
@@ -341,7 +390,7 @@ export default function Home() {
           margin: auto;
 
           display: grid;
-          grid-template-columns: repeat(3,1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 20px;
         }
 
@@ -349,7 +398,7 @@ export default function Home() {
           padding: 20px;
           text-align: center;
 
-          border-right: 1px solid rgba(255,255,255,0.15);
+          border-right: 1px solid rgba(255, 255, 255, 0.15);
         }
 
         .introItem:last-child {
@@ -378,7 +427,7 @@ export default function Home() {
 
         .serviceGrid {
           display: grid;
-          grid-template-columns: repeat(2,1fr);
+          grid-template-columns: repeat(2, 1fr);
           gap: 22px;
         }
 
@@ -389,7 +438,7 @@ export default function Home() {
           border: 1px solid #e5e8e5;
           border-radius: 18px;
 
-          box-shadow: 0 5px 20px rgba(0,0,0,0.04);
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.04);
 
           transition:
             transform 0.2s,
@@ -398,7 +447,7 @@ export default function Home() {
 
         .card:hover {
           transform: translateY(-4px);
-          box-shadow: 0 12px 30px rgba(0,0,0,0.09);
+          box-shadow: 0 12px 30px rgba(0, 0, 0, 0.09);
         }
 
         .cardImage {
@@ -477,7 +526,7 @@ export default function Home() {
 
         .areaGrid {
           display: grid;
-          grid-template-columns: repeat(3,1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: 18px;
           margin-bottom: 30px;
         }
@@ -487,8 +536,8 @@ export default function Home() {
 
           padding: 26px;
 
-          background: rgba(255,255,255,0.1);
-          border: 1px solid rgba(255,255,255,0.2);
+          background: rgba(255, 255, 255, 0.1);
+          border: 1px solid rgba(255, 255, 255, 0.2);
           border-radius: 18px;
 
           transition:
@@ -497,7 +546,7 @@ export default function Home() {
         }
 
         .areaCard:hover {
-          background: rgba(255,255,255,0.18);
+          background: rgba(255, 255, 255, 0.18);
           transform: translateY(-3px);
         }
 
@@ -633,7 +682,7 @@ export default function Home() {
 
           border-radius: 50px;
 
-          box-shadow: 0 8px 25px rgba(0,0,0,0.22);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.22);
 
           font-weight: 900;
         }
@@ -671,7 +720,7 @@ export default function Home() {
           }
 
           .areaGrid {
-            grid-template-columns: repeat(2,1fr);
+            grid-template-columns: repeat(2, 1fr);
           }
         }
 
@@ -720,7 +769,7 @@ export default function Home() {
 
           .introItem {
             border-right: 0;
-            border-bottom: 1px solid rgba(255,255,255,0.15);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
           }
 
           .introItem:last-child {
@@ -756,25 +805,11 @@ export default function Home() {
           </a>
 
           <nav className="navLinks">
-            <a href="#services">
-              벌목
-            </a>
-
-            <a href="#cases">
-              시공사례
-            </a>
-
-            <a href="#area">
-              서비스지역
-            </a>
-
-            <a href="/tree-removal">
-              지역별 벌목
-            </a>
-
-            <a href="#contact">
-              견적문의
-            </a>
+            <a href="#services">벌목</a>
+            <a href="#cases">시공사례</a>
+            <a href="#area">서비스지역</a>
+            <a href="/tree-removal">지역별 벌목</a>
+            <a href="#contact">견적문의</a>
 
             <a
               href={`tel:${PHONE}`}
@@ -788,7 +823,7 @@ export default function Home() {
             type="button"
             className="menuButton"
             onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="메뉴 열기"
+            aria-label={menuOpen ? "메뉴 닫기" : "메뉴 열기"}
             aria-expanded={menuOpen}
           >
             {menuOpen ? "✕" : "☰"}
@@ -797,45 +832,27 @@ export default function Home() {
 
         {menuOpen && (
           <div className="mobileMenu">
-            <a
-              href="#services"
-              onClick={closeMenu}
-            >
+            <a href="#services" onClick={closeMenu}>
               벌목
             </a>
 
-            <a
-              href="#cases"
-              onClick={closeMenu}
-            >
+            <a href="#cases" onClick={closeMenu}>
               시공사례
             </a>
 
-            <a
-              href="#area"
-              onClick={closeMenu}
-            >
+            <a href="#area" onClick={closeMenu}>
               서비스지역
             </a>
 
-            <a
-              href="/tree-removal"
-              onClick={closeMenu}
-            >
+            <a href="/tree-removal" onClick={closeMenu}>
               지역별 벌목
             </a>
 
-            <a
-              href="#contact"
-              onClick={closeMenu}
-            >
+            <a href="#contact" onClick={closeMenu}>
               견적문의
             </a>
 
-            <a
-              href={`tel:${PHONE}`}
-              onClick={closeMenu}
-            >
+            <a href={`tel:${PHONE}`} onClick={closeMenu}>
               ☎ {PHONE_DISPLAY}
             </a>
           </div>
@@ -856,10 +873,7 @@ export default function Home() {
             <h1>
               벌목이 필요한 현장,
               <br />
-              <strong>
-                이지종합건설
-              </strong>
-              이
+              <strong>이지종합건설</strong>이
               <br />
               함께합니다.
             </h1>
@@ -896,33 +910,18 @@ export default function Home() {
         <div className="intro">
           <div className="introGrid">
             <div className="introItem">
-              <strong>
-                벌목 전문 상담
-              </strong>
-
-              <span>
-                현장 사진과 작업 내용을 확인 후 상담
-              </span>
+              <strong>벌목 전문 상담</strong>
+              <span>현장 사진과 작업 내용을 확인 후 상담</span>
             </div>
 
             <div className="introItem">
-              <strong>
-                현장 맞춤 작업
-              </strong>
-
-              <span>
-                주변 시설물과 작업 환경을 고려한 시공
-              </span>
+              <strong>현장 맞춤 작업</strong>
+              <span>주변 시설물과 작업 환경을 고려한 시공</span>
             </div>
 
             <div className="introItem">
-              <strong>
-                광역 출장 상담
-              </strong>
-
-              <span>
-                서울 · 경기 · 인천 · 충남 · 충북
-              </span>
+              <strong>광역 출장 상담</strong>
+              <span>서울 · 경기 · 인천 · 충남 · 충북</span>
             </div>
           </div>
         </div>
@@ -931,10 +930,7 @@ export default function Home() {
             벌목 서비스
         ===================================== */}
 
-        <section
-          className="services"
-          id="services"
-        >
+        <section className="services" id="services">
           <div className="container">
             <div className="sectionLabel">
               TREE REMOVAL SERVICE
@@ -965,13 +961,8 @@ export default function Home() {
                   />
 
                   <div className="cardBody">
-                    <h3>
-                      {item.title}
-                    </h3>
-
-                    <p>
-                      {item.desc}
-                    </p>
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
                   </div>
                 </article>
               ))}
@@ -999,25 +990,24 @@ export default function Home() {
             </p>
 
             <div className="serviceGrid">
-              <article className="card">
-                <img
-                  src={TREE_IMAGE}
-                  alt="이지종합건설 벌목 작업 현장"
-                  className="cardImage"
-                  loading="lazy"
-                />
+              {cases.map((item) => (
+                <article
+                  className="card"
+                  key={item.title}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="cardImage"
+                    loading="lazy"
+                  />
 
-                <div className="cardBody">
-                  <h3>
-                    벌목 작업 현장
-                  </h3>
-
-                  <p>
-                    현장별 벌목 작업 사진과
-                    시공 내용을 소개합니다.
-                  </p>
-                </div>
-              </article>
+                  <div className="cardBody">
+                    <h3>{item.title}</h3>
+                    <p>{item.desc}</p>
+                  </div>
+                </article>
+              ))}
             </div>
           </div>
         </section>
@@ -1053,9 +1043,7 @@ export default function Home() {
             </div>
 
             <div className="aboutBox">
-              <h3>
-                벌목 상담 안내
-              </h3>
+              <h3>벌목 상담 안내</h3>
 
               <div className="check">
                 ✓ 주택 및 건물 주변 나무 제거
@@ -1088,10 +1076,7 @@ export default function Home() {
             지역별 벌목 서비스
         ===================================== */}
 
-        <section
-          className="area"
-          id="area"
-        >
+        <section className="area" id="area">
           <div className="container">
             <div className="sectionLabel">
               SERVICE AREA
@@ -1117,13 +1102,9 @@ export default function Home() {
                   href={area.href}
                   className="areaCard"
                 >
-                  <h3>
-                    {area.name} 벌목
-                  </h3>
+                  <h3>{area.name} 벌목</h3>
 
-                  <p>
-                    {area.desc}
-                  </p>
+                  <p>{area.desc}</p>
 
                   <span>
                     지역별 벌목 페이지 보기 →
@@ -1159,9 +1140,7 @@ export default function Home() {
                 TREE REMOVAL CONTACT
               </div>
 
-              <h2>
-                벌목 견적 문의
-              </h2>
+              <h2>벌목 견적 문의</h2>
 
               <p>
                 벌목이 필요한 나무의 사진과
@@ -1193,13 +1172,9 @@ export default function Home() {
             {COMPANY}
           </div>
 
-          <div>
-            벌목 전문업체
-          </div>
+          <div>벌목 전문업체</div>
 
-          <div>
-            대표자 : 송은규
-          </div>
+          <div>대표자 : 송은규</div>
 
           <div>
             사업자등록번호 : 882-06-03153
