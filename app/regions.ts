@@ -15,7 +15,7 @@ const makeRegions = (
   }));
 
 export const regions: Region[] = [
-  // 광역 지역
+  // 광역 지역 페이지
   ...makeRegions("서울", [["서울", "seoul"]]),
   ...makeRegions("경기", [["경기", "gyeonggi"]]),
   ...makeRegions("인천", [["인천", "incheon"]]),
@@ -136,25 +136,20 @@ export const regions: Region[] = [
   ]),
 ];
 
-export const getRegion = (slug: string): Region | undefined =>
-  regions.find((item) => item.slug === slug);
+export const getRegion = (slug: string) =>
+  regions.find((region) => region.slug === slug);
 
-export const getRegionName = (region: Region): string => {
+export const getRegionName = (region: Region) => {
+  // 광역 지역은 '인천 인천'처럼 중복 표시하지 않음
   if (region.name === region.province) {
     return region.name;
   }
 
-  const shortName = region.name.replace(/(시|군|구)$/, "");
-
-  if (
-    ["중구", "동구", "서구", "강서구"].includes(region.name) ||
-    region.slug === "gwangju-gyeonggi"
-  ) {
-    return `${region.province} ${shortName}`;
-  }
-
-  return shortName;
+  // 서울 강남구 → 강남구
+  // 경기 수원시 → 수원시
+  // 인천 부평구 → 부평구
+  return region.name;
 };
 
-export const getRegionUrl = (region: Region): string =>
+export const getRegionUrl = (region: Region) =>
   `/tree-removal/${region.slug}`;
