@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useState } from "react";
@@ -14,7 +13,6 @@ const PHONE_DISPLAY = "010-2384-9768";
 
 /* =====================================
    벌목 사진
-   public 폴더에 업로드한 파일명
 ===================================== */
 
 const TREE_IMAGES = {
@@ -34,7 +32,7 @@ const TREE_IMAGES = {
 };
 
 /* =====================================
-   벌목 서비스
+   벌목 서비스 카테고리
 ===================================== */
 
 const services = [
@@ -44,7 +42,9 @@ const services = [
       "주택, 상가, 공장 등 건물 주변의 나무를 " +
       "현장 상황에 맞춰 제거합니다.",
     image: TREE_IMAGES.building,
+    href: "/tree-removal/building",
   },
+
   {
     title: "위험목 제거",
     desc:
@@ -52,7 +52,9 @@ const services = [
       "나무의 상태와 주변 환경을 확인한 후 " +
       "작업 방법을 안내합니다.",
     image: TREE_IMAGES.dangerous,
+    href: "/tree-removal/dangerous",
   },
+
   {
     title: "대형 수목 벌목",
     desc:
@@ -60,13 +62,34 @@ const services = [
       "현장 접근성과 주변 시설물을 고려한 " +
       "벌목 작업을 진행합니다.",
     image: TREE_IMAGES.large,
+    href: "/tree-removal/large",
   },
+
   {
     title: "토지 및 임야 벌목",
     desc:
       "토지 정리, 부지 관리 및 임야 내 수목 제거 등 " +
       "현장 규모에 맞춰 상담해드립니다.",
     image: TREE_IMAGES.land,
+    href: "/tree-removal/land",
+  },
+
+  {
+    title: "재선충 피해목 제거",
+    desc:
+      "재선충 피해가 의심되거나 고사한 소나무 등 " +
+      "현장 상태를 확인하고 피해목 제거 작업을 상담합니다.",
+    image: TREE_IMAGES.main,
+    href: "/tree-removal/pine-wilt",
+  },
+
+  {
+    title: "나무뿌리 제거",
+    desc:
+      "벌목 후 남은 그루터기와 나무뿌리 등 " +
+      "현장 여건에 맞춰 제거 작업을 진행합니다.",
+    image: TREE_IMAGES.main,
+    href: "/tree-removal/root-removal",
   },
 ];
 
@@ -81,18 +104,21 @@ const cases = [
       "건물 주변 수목의 벌목 전·후 현장 사진입니다.",
     image: TREE_IMAGES.building,
   },
+
   {
     title: "주택 주변 나무 제거",
     desc:
       "주택 주변 나무 제거 작업의 전·후 사진입니다.",
     image: TREE_IMAGES.dangerous,
   },
+
   {
     title: "대형 수목 벌목 현장",
     desc:
       "수목 벌목 작업 전·후 모습을 확인하실 수 있습니다.",
     image: TREE_IMAGES.large,
   },
+
   {
     title: "토지 및 부지 벌목",
     desc:
@@ -111,21 +137,25 @@ const serviceAreas = [
     desc: "서울특별시 25개 자치구",
     href: "/tree-removal#seoul",
   },
+
   {
     name: "경기",
     desc: "수원 · 용인 · 화성 · 평택 등",
     href: "/tree-removal#gyeonggi",
   },
+
   {
     name: "인천",
     desc: "인천광역시 시·군·구",
     href: "/tree-removal#incheon",
   },
+
   {
     name: "충남",
     desc: "천안 · 아산 · 당진 · 서산 등",
     href: "/tree-removal#chungnam",
   },
+
   {
     name: "충북",
     desc: "청주 · 충주 · 제천 · 음성 등",
@@ -473,6 +503,25 @@ export default function Home() {
           line-height: 1.7;
         }
 
+        .serviceLink {
+          display: inline-block;
+
+          margin-top: 17px;
+          padding: 11px 15px;
+
+          background: #edf5ef;
+          color: #1d5b39;
+
+          border-radius: 9px;
+
+          font-size: 14px;
+          font-weight: 900;
+        }
+
+        .clickableCard {
+          display: block;
+        }
+
         /* =====================================
            벌목 상담 안내
         ===================================== */
@@ -688,7 +737,7 @@ export default function Home() {
         }
 
         /* =====================================
-           모바일 디자인
+           모바일
         ===================================== */
 
         @media (max-width: 850px) {
@@ -794,10 +843,6 @@ export default function Home() {
         }
       `}</style>
 
-      {/* =====================================
-          상단 메뉴
-      ===================================== */}
-
       <header>
         <div className="nav">
           <a href="#home" className="logo">
@@ -805,16 +850,13 @@ export default function Home() {
           </a>
 
           <nav className="navLinks">
-            <a href="#services">벌목</a>
+            <a href="#services">벌목 서비스</a>
             <a href="#cases">시공사례</a>
             <a href="#area">서비스지역</a>
             <a href="/tree-removal">지역별 벌목</a>
             <a href="#contact">견적문의</a>
 
-            <a
-              href={`tel:${PHONE}`}
-              className="callTop"
-            >
+            <a href={`tel:${PHONE}`} className="callTop">
               전화 문의
             </a>
           </nav>
@@ -833,7 +875,7 @@ export default function Home() {
         {menuOpen && (
           <div className="mobileMenu">
             <a href="#services" onClick={closeMenu}>
-              벌목
+              벌목 서비스
             </a>
 
             <a href="#cases" onClick={closeMenu}>
@@ -859,10 +901,6 @@ export default function Home() {
         )}
       </header>
 
-      {/* =====================================
-          메인 홈페이지
-      ===================================== */}
-
       <main id="home">
         <section className="hero">
           <div className="heroInner">
@@ -879,33 +917,25 @@ export default function Home() {
             </h1>
 
             <p>
-              주택 주변 위험목 제거부터
-              대형 수목 벌목,
-              토지 및 임야 벌목까지.
+              주택 주변 위험목 제거부터 대형 수목 벌목,
+              토지·임야 벌목, 재선충 피해목,
+              나무뿌리 제거까지.
               <br />
               현장 환경과 작업 조건을 확인하고
-              적합한 벌목 방법을 안내해드립니다.
+              적합한 작업 방법을 안내해드립니다.
             </p>
 
             <div className="heroButtons">
-              <a
-                href={`tel:${PHONE}`}
-                className="primaryBtn"
-              >
+              <a href={`tel:${PHONE}`} className="primaryBtn">
                 ☎ 벌목 견적 문의
               </a>
 
-              <a
-                href="/tree-removal"
-                className="secondaryBtn"
-              >
-                지역별 벌목 서비스 보기
+              <a href="#services" className="secondaryBtn">
+                벌목 서비스 선택
               </a>
             </div>
           </div>
         </section>
-
-        {/* 업체 안내 */}
 
         <div className="intro">
           <div className="introGrid">
@@ -927,7 +957,7 @@ export default function Home() {
         </div>
 
         {/* =====================================
-            벌목 서비스
+            6개 서비스 카테고리
         ===================================== */}
 
         <section className="services" id="services">
@@ -937,20 +967,20 @@ export default function Home() {
             </div>
 
             <h2 className="sectionTitle">
-              벌목 전문 시공
+              벌목 서비스 선택
             </h2>
 
             <p className="sectionDesc">
-              주택, 공장, 상가, 토지 및 임야 등
-              다양한 현장의 벌목 작업을 상담해드립니다.
-              나무의 크기와 주변 환경에 따라
-              작업 방법 및 견적이 달라질 수 있습니다.
+              필요한 작업을 선택하면 해당 서비스의
+              자세한 작업 내용과 지역별 안내를
+              확인할 수 있습니다.
             </p>
 
             <div className="serviceGrid">
               {services.map((item) => (
-                <article
-                  className="card"
+                <a
+                  href={item.href}
+                  className="card clickableCard"
                   key={item.title}
                 >
                   <img
@@ -962,17 +992,20 @@ export default function Home() {
 
                   <div className="cardBody">
                     <h3>{item.title}</h3>
+
                     <p>{item.desc}</p>
+
+                    <span className="serviceLink">
+                      자세히 보기 →
+                    </span>
                   </div>
-                </article>
+                </a>
               ))}
             </div>
           </div>
         </section>
 
-        {/* =====================================
-            시공사례
-        ===================================== */}
+        {/* 시공사례 */}
 
         <section id="cases">
           <div className="container">
@@ -991,10 +1024,7 @@ export default function Home() {
 
             <div className="serviceGrid">
               {cases.map((item) => (
-                <article
-                  className="card"
-                  key={item.title}
-                >
+                <article className="card" key={item.title}>
                   <img
                     src={item.image}
                     alt={item.title}
@@ -1012,9 +1042,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =====================================
-            벌목 상담 안내
-        ===================================== */}
+        {/* 상담 안내 */}
 
         <section>
           <div className="container aboutGrid">
@@ -1046,7 +1074,7 @@ export default function Home() {
               <h3>벌목 상담 안내</h3>
 
               <div className="check">
-                ✓ 주택 및 건물 주변 나무 제거
+                ✓ 주택 및 건물 주변 벌목
               </div>
 
               <div className="check">
@@ -1062,6 +1090,14 @@ export default function Home() {
               </div>
 
               <div className="check">
+                ✓ 재선충 피해목 제거
+              </div>
+
+              <div className="check">
+                ✓ 나무뿌리 및 그루터기 제거
+              </div>
+
+              <div className="check">
                 ✓ 현장 접근성 및 장비 진입 확인
               </div>
 
@@ -1072,9 +1108,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* =====================================
-            지역별 벌목 서비스
-        ===================================== */}
+        {/* 지역별 서비스 */}
 
         <section className="area" id="area">
           <div className="container">
@@ -1113,25 +1147,19 @@ export default function Home() {
               ))}
             </div>
 
-            <a
-              href="/tree-removal"
-              className="allAreaBtn"
-            >
+            <a href="/tree-removal" className="allAreaBtn">
               🌳 전체 벌목 출장 지역 보기 →
             </a>
 
             <p className="areaNotice">
               서울 · 경기 · 인천 · 충남 · 충북
-              그 외 지역도 현장 위치와
-              작업 규모에 따라 출장 가능 여부를
-              확인해드립니다.
+              그 외 지역도 현장 위치와 작업 규모에 따라
+              출장 가능 여부를 확인해드립니다.
             </p>
           </div>
         </section>
 
-        {/* =====================================
-            견적 문의
-        ===================================== */}
+        {/* 견적문의 */}
 
         <section id="contact">
           <div className="container">
@@ -1151,20 +1179,13 @@ export default function Home() {
                 상담해드립니다.
               </p>
 
-              <a
-                href={`tel:${PHONE}`}
-                className="bigCall"
-              >
+              <a href={`tel:${PHONE}`} className="bigCall">
                 ☎ {PHONE_DISPLAY}
               </a>
             </div>
           </div>
         </section>
       </main>
-
-      {/* =====================================
-          하단 사업자 정보
-      ===================================== */}
 
       <footer>
         <div className="footerInner">
@@ -1173,16 +1194,9 @@ export default function Home() {
           </div>
 
           <div>벌목 전문업체</div>
-
           <div>대표자 : 송은규</div>
-
-          <div>
-            사업자등록번호 : 882-06-03153
-          </div>
-
-          <div>
-            전화 : {PHONE_DISPLAY}
-          </div>
+          <div>사업자등록번호 : 882-06-03153</div>
+          <div>전화 : {PHONE_DISPLAY}</div>
 
           <div>
             서비스지역 : 서울 · 경기 · 인천 ·
@@ -1201,20 +1215,12 @@ export default function Home() {
           <br />
 
           <div>
-            © 2026 {COMPANY}.
-            All Rights Reserved.
+            © 2026 {COMPANY}. All Rights Reserved.
           </div>
         </div>
       </footer>
 
-      {/* =====================================
-          하단 고정 전화 버튼
-      ===================================== */}
-
-      <a
-        href={`tel:${PHONE}`}
-        className="floatingCall"
-      >
+      <a href={`tel:${PHONE}`} className="floatingCall">
         ☎ 벌목 견적문의
       </a>
     </>
