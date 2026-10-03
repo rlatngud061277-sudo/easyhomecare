@@ -42,7 +42,7 @@ const services = [
       "주택, 상가, 공장 등 건물 주변의 나무를 " +
       "현장 상황에 맞춰 제거합니다.",
     image: TREE_IMAGES.building,
-    href: "/tree-removal/building",
+    href: "/services/building",
   },
 
   {
@@ -52,7 +52,7 @@ const services = [
       "나무의 상태와 주변 환경을 확인한 후 " +
       "작업 방법을 안내합니다.",
     image: TREE_IMAGES.dangerous,
-    href: "/tree-removal/dangerous",
+    href: "/services/dangerous",
   },
 
   {
@@ -62,7 +62,7 @@ const services = [
       "현장 접근성과 주변 시설물을 고려한 " +
       "벌목 작업을 진행합니다.",
     image: TREE_IMAGES.large,
-    href: "/tree-removal/large",
+    href: "/services/large",
   },
 
   {
@@ -71,7 +71,7 @@ const services = [
       "토지 정리, 부지 관리 및 임야 내 수목 제거 등 " +
       "현장 규모에 맞춰 상담해드립니다.",
     image: TREE_IMAGES.land,
-    href: "/tree-removal/land",
+    href: "/services/land",
   },
 
   {
@@ -80,7 +80,7 @@ const services = [
       "재선충 피해가 의심되거나 고사한 소나무 등 " +
       "현장 상태를 확인하고 피해목 제거 작업을 상담합니다.",
     image: TREE_IMAGES.main,
-    href: "/tree-removal/pine-wilt",
+    href: "/services/pine-wilt",
   },
 
   {
@@ -89,7 +89,7 @@ const services = [
       "벌목 후 남은 그루터기와 나무뿌리 등 " +
       "현장 여건에 맞춰 제거 작업을 진행합니다.",
     image: TREE_IMAGES.main,
-    href: "/tree-removal/root-removal",
+    href: "/services/root-removal",
   },
 ];
 
@@ -520,6 +520,7 @@ export default function Home() {
 
         .clickableCard {
           display: block;
+          cursor: pointer;
         }
 
         /* =====================================
@@ -843,6 +844,10 @@ export default function Home() {
         }
       `}</style>
 
+      {/* =====================================
+          HEADER
+      ===================================== */}
+
       <header>
         <div className="nav">
           <a href="#home" className="logo">
@@ -902,6 +907,10 @@ export default function Home() {
       </header>
 
       <main id="home">
+        {/* =====================================
+            HERO
+        ===================================== */}
+
         <section className="hero">
           <div className="heroInner">
             <div className="badge">
@@ -926,32 +935,48 @@ export default function Home() {
             </p>
 
             <div className="heroButtons">
-              <a href={`tel:${PHONE}`} className="primaryBtn">
+              <a
+                href={`tel:${PHONE}`}
+                className="primaryBtn"
+              >
                 ☎ 벌목 견적 문의
               </a>
 
-              <a href="#services" className="secondaryBtn">
+              <a
+                href="#services"
+                className="secondaryBtn"
+              >
                 벌목 서비스 선택
               </a>
             </div>
           </div>
         </section>
 
+        {/* =====================================
+            업체 안내
+        ===================================== */}
+
         <div className="intro">
           <div className="introGrid">
             <div className="introItem">
               <strong>벌목 전문 상담</strong>
-              <span>현장 사진과 작업 내용을 확인 후 상담</span>
+              <span>
+                현장 사진과 작업 내용을 확인 후 상담
+              </span>
             </div>
 
             <div className="introItem">
               <strong>현장 맞춤 작업</strong>
-              <span>주변 시설물과 작업 환경을 고려한 시공</span>
+              <span>
+                주변 시설물과 작업 환경을 고려한 시공
+              </span>
             </div>
 
             <div className="introItem">
               <strong>광역 출장 상담</strong>
-              <span>서울 · 경기 · 인천 · 충남 · 충북</span>
+              <span>
+                서울 · 경기 · 인천 · 충남 · 충북
+              </span>
             </div>
           </div>
         </div>
@@ -960,7 +985,10 @@ export default function Home() {
             6개 서비스 카테고리
         ===================================== */}
 
-        <section className="services" id="services">
+        <section
+          className="services"
+          id="services"
+        >
           <div className="container">
             <div className="sectionLabel">
               TREE REMOVAL SERVICE
@@ -991,9 +1019,13 @@ export default function Home() {
                   />
 
                   <div className="cardBody">
-                    <h3>{item.title}</h3>
+                    <h3>
+                      {item.title}
+                    </h3>
 
-                    <p>{item.desc}</p>
+                    <p>
+                      {item.desc}
+                    </p>
 
                     <span className="serviceLink">
                       자세히 보기 →
@@ -1005,7 +1037,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 시공사례 */}
+        {/* =====================================
+            시공사례
+        ===================================== */}
 
         <section id="cases">
           <div className="container">
@@ -1024,7 +1058,10 @@ export default function Home() {
 
             <div className="serviceGrid">
               {cases.map((item) => (
-                <article className="card" key={item.title}>
+                <article
+                  className="card"
+                  key={item.title}
+                >
                   <img
                     src={item.image}
                     alt={item.title}
@@ -1033,8 +1070,13 @@ export default function Home() {
                   />
 
                   <div className="cardBody">
-                    <h3>{item.title}</h3>
-                    <p>{item.desc}</p>
+                    <h3>
+                      {item.title}
+                    </h3>
+
+                    <p>
+                      {item.desc}
+                    </p>
                   </div>
                 </article>
               ))}
@@ -1042,7 +1084,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 상담 안내 */}
+        {/* =====================================
+            상담 안내
+        ===================================== */}
 
         <section>
           <div className="container aboutGrid">
@@ -1071,7 +1115,9 @@ export default function Home() {
             </div>
 
             <div className="aboutBox">
-              <h3>벌목 상담 안내</h3>
+              <h3>
+                벌목 상담 안내
+              </h3>
 
               <div className="check">
                 ✓ 주택 및 건물 주변 벌목
@@ -1108,9 +1154,14 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 지역별 서비스 */}
+        {/* =====================================
+            지역별 서비스
+        ===================================== */}
 
-        <section className="area" id="area">
+        <section
+          className="area"
+          id="area"
+        >
           <div className="container">
             <div className="sectionLabel">
               SERVICE AREA
@@ -1136,9 +1187,13 @@ export default function Home() {
                   href={area.href}
                   className="areaCard"
                 >
-                  <h3>{area.name} 벌목</h3>
+                  <h3>
+                    {area.name} 벌목
+                  </h3>
 
-                  <p>{area.desc}</p>
+                  <p>
+                    {area.desc}
+                  </p>
 
                   <span>
                     지역별 벌목 페이지 보기 →
@@ -1147,7 +1202,10 @@ export default function Home() {
               ))}
             </div>
 
-            <a href="/tree-removal" className="allAreaBtn">
+            <a
+              href="/tree-removal"
+              className="allAreaBtn"
+            >
               🌳 전체 벌목 출장 지역 보기 →
             </a>
 
@@ -1159,7 +1217,9 @@ export default function Home() {
           </div>
         </section>
 
-        {/* 견적문의 */}
+        {/* =====================================
+            견적문의
+        ===================================== */}
 
         <section id="contact">
           <div className="container">
@@ -1168,7 +1228,9 @@ export default function Home() {
                 TREE REMOVAL CONTACT
               </div>
 
-              <h2>벌목 견적 문의</h2>
+              <h2>
+                벌목 견적 문의
+              </h2>
 
               <p>
                 벌목이 필요한 나무의 사진과
@@ -1179,7 +1241,10 @@ export default function Home() {
                 상담해드립니다.
               </p>
 
-              <a href={`tel:${PHONE}`} className="bigCall">
+              <a
+                href={`tel:${PHONE}`}
+                className="bigCall"
+              >
                 ☎ {PHONE_DISPLAY}
               </a>
             </div>
@@ -1187,16 +1252,31 @@ export default function Home() {
         </section>
       </main>
 
+      {/* =====================================
+          FOOTER
+      ===================================== */}
+
       <footer>
         <div className="footerInner">
           <div className="footerLogo">
             {COMPANY}
           </div>
 
-          <div>벌목 전문업체</div>
-          <div>대표자 : 송은규</div>
-          <div>사업자등록번호 : 882-06-03153</div>
-          <div>전화 : {PHONE_DISPLAY}</div>
+          <div>
+            벌목 전문업체
+          </div>
+
+          <div>
+            대표자 : 송은규
+          </div>
+
+          <div>
+            사업자등록번호 : 882-06-03153
+          </div>
+
+          <div>
+            전화 : {PHONE_DISPLAY}
+          </div>
 
           <div>
             서비스지역 : 서울 · 경기 · 인천 ·
@@ -1220,7 +1300,12 @@ export default function Home() {
         </div>
       </footer>
 
-      <a href={`tel:${PHONE}`} className="floatingCall">
+      {/* 하단 고정 전화버튼 */}
+
+      <a
+        href={`tel:${PHONE}`}
+        className="floatingCall"
+      >
         ☎ 벌목 견적문의
       </a>
     </>
